@@ -2,7 +2,7 @@ import { Footer } from "./components/Footer/Footer";
 import { Form } from "./components/formulario";
 
 import { Header } from "./components/header/Header";
-import { Nav } from "./components/nav/Nav";
+import {  Navegation } from "./components/navegation/Navegation";
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
           <h2>Resultados de búsqueda</h2>
           <div className="jobs-listings"></div>
           {/* Navegacion */}
-          <Nav />
+          <Navegation currentPage={1} totalPages={8} />
         </section>
       </main>
       {/* Footer */}
