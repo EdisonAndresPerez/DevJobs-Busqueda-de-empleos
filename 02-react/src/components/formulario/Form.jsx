@@ -7,6 +7,12 @@ import { useState } from "react";
 export const Form = () => {
   const [filter, setFilter] = useState({});
 
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log('Submit del formulario de busqueda')
+  }
+
   const onChange = (event) => {
     const { name, value } = event.target;
 
@@ -17,7 +23,7 @@ export const Form = () => {
   };
 
   return (
-    <form id="empleos-search-form" role="search">
+    <form  onSubmit={handleSubmit}  id="empleos-search-form" role="search">
       <div className="search-bar">
         <SearchInput
           name="search"

@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import data from "./data.json";
 
-
 import { Footer } from "./components/Footer/Footer";
 import { Form } from "./components/formulario";
 
@@ -10,17 +9,16 @@ import { Header } from "./components/header/Header";
 import { Navegation } from "./components/navegation/Navegation";
 import { JobListings } from "./components/jobListings/JobListings";
 
-const RESULTS_PER_PAGE = 5
-
+const RESULTS_PER_PAGE = 5;
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPage = Math.ceil(data.length / RESULTS_PER_PAGE);
 
-
-
-  const pagedResults = data.slice((currentPage - 1) * RESULTS_PER_PAGE,
-   currentPage * RESULTS_PER_PAGE )
+  const pagedResults = data.slice(
+    (currentPage - 1) * RESULTS_PER_PAGE,
+    currentPage * RESULTS_PER_PAGE
+  );
 
   const handlePageChange = (page) => {
     console.log("hola probando", page);
@@ -29,7 +27,7 @@ function App() {
 
   return (
     <>
-      {/* header */} 
+      {/* header */}
       <Header />
 
       {/* Main */}
