@@ -5,6 +5,7 @@ import { Form } from "./components/formulario";
 
 import { Header } from "./components/header/Header";
 import { Navegation } from "./components/navegation/Navegation";
+import { JobListings } from "./components/jobListings/JobListings";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,8 +34,12 @@ function App() {
 
         {/* Seccion 2 */}
         <section>
-          <h2>Resultados de búsqueda</h2>
-          <div className="jobs-listings"></div>
+
+           {/* Resultados de busqueda */}
+          <JobListings/>
+
+
+
           {/* Navegacion */}
           <Navegation
             currentPage={currentPage}
