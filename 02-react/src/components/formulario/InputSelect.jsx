@@ -1,15 +1,14 @@
 
-export const InputSelect = ( {name, id, placeholder, options, onChange }) => {
+export const InputSelect = ({ name, id, placeholder, options, value, onChange }) => {
   return (
-    <select  onChange={onChange} name={name} id={id} defaultValue=""> 
+    <select onChange={onChange} name={name} id={id} value={value || ""}>
       <option value="" disabled hidden>
         {placeholder}
       </option>
-
-      {options.map((options, key) => {
+      {options.map((option, key) => {
         return (
-          <option key={key} value={options.value}>
-            {options.label}
+          <option key={key} value={option.value}>
+            {option.label}
           </option>
         );
       })}

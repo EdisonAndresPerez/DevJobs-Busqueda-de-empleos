@@ -6,7 +6,7 @@
     "ubicacion": "Remoto",
     "descripcion": "Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScript, React y Node.js. El candidato ideal debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicación.",
     "data": {
-      "technology": ["react", "node", "javascript"],
+      "technology": "javascript",
       "modalidad": "remoto",
       "nivel": "senior"
     }
@@ -100,7 +100,7 @@
     "titulo": "Frontend Developer",
     "empresa": "Bright Web Studio",
     "ubicacion": "Valencia",
-    "descripcion": "Buscamos un desarrollador frontend con experiencia en React, TypeScript y Tailwind CSS. Se valorará conocimiento en optimización de rendimiento y accesibilidad web.",
+    "descripcion": "Buscamos un desarrollador frontend  junior con experiencia en React, TypeScript y Tailwind CSS. Se valorará conocimiento en optimización de rendimiento y accesibilidad web.",
     "data": {
       "technology": "react",
       "modalidad": "valencia",
@@ -178,6 +178,17 @@
       "modalidad": "monterrey",
       "nivel": "junior"
     }
+  },
+  {
+    "id": "test-123",
+    "titulo": "Frontend Developer Junior Remoto",
+    "empresa": "Test Company",
+    "ubicacion": "Remoto",
+    "descripcion": "Prueba para filtrado: javascript, remoto, junior lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem.",
+    "data": {
+      "technology": "javascript",
+      "modalidad": "remoto",
+      "nivel": "junior"
+    }
   }
 ]
-

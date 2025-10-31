@@ -1,5 +1,5 @@
 
-export const SearchInput = ({name, id, placeholder}) => {
+export const SearchInput = ({ name, id, placeholder, value, onChange }) => {
   return (
     <>
       <svg
@@ -25,6 +25,8 @@ export const SearchInput = ({name, id, placeholder}) => {
         required
         type="text"
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
       />
     </>
   );

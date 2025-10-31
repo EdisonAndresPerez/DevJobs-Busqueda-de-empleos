@@ -1,58 +1,54 @@
+
 import { TECHNOLOGIES, LOCATIONS, EXPERIENCE_LEVELS } from "./form.constants";
 import { SearchInput } from "./SearchInput";
 import { InputSelect } from "./InputSelect";
 
-import { useState } from "react";
-
-export const Form = () => {
-  const [filter, setFilter] = useState({});
-
+export const Form = ({ filters, onFilterChange }) => {
+  // Actualiza el filtro en tiempo real
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    onFilterChange({ [name]: value });
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log('Submit del formulario de busqueda')
-  }
-
-  const onChange = (event) => {
-    const { name, value } = event.target;
-
-    const newFilters = { ...filter, [name]: value };
-    if(!value ) delete newFilters[name]
-    setFilter(newFilters);
-    console.log(newFilters)
+    event.preventDefault();
   };
 
   return (
-    <form  onSubmit={handleSubmit}  id="empleos-search-form" role="search">
+    <form onSubmit={handleSubmit} id="empleos-search-form" role="search">
       <div className="search-bar">
         <SearchInput
           name="search"
           id="empleos-search-input"
           placeholder="Buscar trabajos, empresas o habilidades"
+          value={filters.search}
+          onChange={handleInputChange}
         />
       </div>
-
       <div className="search-filters">
         <InputSelect
           name="technology"
           id="filter-technology"
           placeholder="Tecnologías Populares"
           options={TECHNOLOGIES}
-          onChange={onChange}
+          value={filters.technology}
+          onChange={handleInputChange}
         />
         <InputSelect
           name="location"
           id="filter-location"
           placeholder="Ubicación"
           options={LOCATIONS}
-          onChange={onChange}
+          value={filters.location}
+          onChange={handleInputChange}
         />
         <InputSelect
           name="experience-level"
           id="filter-experience-level"
           placeholder="Nivel de experiencia"
           options={EXPERIENCE_LEVELS}
-          onChange={onChange}
+          value={filters["experience-level"]}
+          onChange={handleInputChange}
         />
       </div>
     </form>
