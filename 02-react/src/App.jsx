@@ -1,10 +1,20 @@
+import { useState } from "react";
+
 import { Footer } from "./components/Footer/Footer";
 import { Form } from "./components/formulario";
 
 import { Header } from "./components/header/Header";
-import {  Navegation } from "./components/navegation/Navegation";
+import { Navegation } from "./components/navegation/Navegation";
 
 function App() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPage = 6;
+
+  const handlePageChange = (page) => {
+    console.log("hola probando", page);
+    setCurrentPage(page);
+  };
+
   return (
     <>
       {/* header */}
@@ -26,7 +36,11 @@ function App() {
           <h2>Resultados de búsqueda</h2>
           <div className="jobs-listings"></div>
           {/* Navegacion */}
-          <Navegation currentPage={1} totalPages={8} />
+          <Navegation
+            currentPage={currentPage}
+            totalPages={totalPage}
+            onPageChange={handlePageChange}
+          />
         </section>
       </main>
       {/* Footer */}
