@@ -427,8 +427,38 @@ article {
 }
 
 
+      /* Ajustes locales para el header de esta página (no afecta otros HTML) */
+      header .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
 
-/* selector con id unico para javascript */
-#aplicar{
+      header .header-actions form {
+        margin: 0;
+        padding: 0;
+        width: auto;
+        max-width: none;
+      }
 
-}
+      header .header-actions form > div {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: var(--input-bg);
+        border-radius: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        box-shadow: none;
+      }
+
+      header .header-actions svg {
+        width: 20px;
+        height: 20px;
+        color: var(--text-muted);
+        flex-shrink: 0;
+      }
+
+      header .header-actions input[type="text"] {
+        width: clamp(12rem, 26vw, 22rem);
+        padding: 0.5rem 0.5rem;
+      }
