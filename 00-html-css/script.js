@@ -40,6 +40,6 @@ document.addEventListener("click", (evento) => {
 });
 
 const filter = document.querySelector("#technology-jobs");
-filter.addEventListener('change', function() {
+filter.addEventListener("change", function () {
   console.log(filter.value);
 });
