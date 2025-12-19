@@ -15,9 +15,8 @@
 //});
 
 //Forma correcta y actualizada
-
 const jobsListings = document.querySelector(".jobs-listings");
-
+//
 jobsListings.addEventListener("click", function (evento) {
   if (evento.target.classList.contains("button-apply-job")) {
     evento.target.textContent = "Aplicado";
