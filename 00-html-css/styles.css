@@ -478,6 +478,39 @@ nav[aria-label="Breadcrumb"] {
   padding: 0 1rem;
 }
 
+nav[aria-label="Breadcrumb"] ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+nav[aria-label="Breadcrumb"] li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav[aria-label="Breadcrumb"] li + li::before {
+  content: "/";
+  opacity: 0.6;
+}
+
+nav[aria-label="Breadcrumb"] a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+nav[aria-label="Breadcrumb"] a:hover,
+nav[aria-label="Breadcrumb"] a:focus {
+  color: var(--text-primary);
+  outline: none;
+}
+
 .links_ofertas {
   color: inherit;
   text-decoration: none;

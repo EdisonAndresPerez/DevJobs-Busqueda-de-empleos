@@ -28,13 +28,18 @@ jobsListings.addEventListener("click", function (evento) {
   console.log(evento.target.classList.contains("button-apply-job"));
 });
 
-
-
 document.addEventListener("click", (evento) => {
   const card = evento.target.closest?.(".job-listing-card");
   if (!card) return;
 
   if (card.id === "job-mobile") {
-    console.log("Haz hecho click en la tarjeta: Desarrollador de Aplicaciones Móviles");
+    console.log(
+      "Haz hecho click en la tarjeta: Desarrollador de Aplicaciones Móviles"
+    );
   }
+});
+
+const filter = document.querySelector("#technology-jobs");
+filter.addEventListener('change', function() {
+  console.log(filter.value);
 });
