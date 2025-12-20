@@ -45,35 +45,35 @@ document.addEventListener("click", (evento) => {
 //  console.log(filter.value);
 //});
 
-
-
-
-
 //crear funcion para manejar los filtros
 //usando delegeacion de eventos
 const filtersDiv = document.querySelector("#filters");
 let technologyFilterValue = "all";
 let locationFilterValue = "all";
+let experienceFilterValue = "all";
 filtersDiv.addEventListener("change", function (evento) {
   const filter = evento.target;
 
   if (filter.tagName === "SELECT") {
     if (filter.id === "technology-jobs") {
-      technologyFilterValue = filter.value;
+      technologyFilterValue = filter.value || "all";
     }
 
     if (filter.id === "location-jobs") {
-      locationFilterValue = filter.value;
+      locationFilterValue = filter.value || "all";
     }
 
-    if ( filter.id === "experience-jobs"){
-      experienceFilterValue = filter.value;
+    if (filter.id === "experience-jobs") {
+      experienceFilterValue = filter.value || "all";
     }
-
 
     filtarOfertas();
     console.log(`Filtro cambiado: ${filter.id} = ${filter.value}`);
-    console.log({ technologyFilterValue, locationFilterValue });
+    console.log({
+      technologyFilterValue,
+      locationFilterValue,
+      experienceFilterValue,
+    });
   }
 });
 
