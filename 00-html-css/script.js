@@ -109,3 +109,15 @@ function filtarOfertas() {
     }
   });
 }
+
+
+// Input: imprimir valor en consola (paso 1)
+const searchInput = document.querySelector("#searchInput");
+
+function logSearchValue(evento) {
+  console.log("[searchInput]", evento.target.value);
+}
+
+searchInput?.addEventListener("input", logSearchValue);
+
+//funcion debounce para filtar por titulo de las ofertas de la api
