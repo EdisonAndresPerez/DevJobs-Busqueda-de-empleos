@@ -12,6 +12,7 @@
     <title>DevJobs - Inicio</title>
     <script defer src="script.js"></script>
   </head>
+
   <body>
     <header>
       <h2>DevJobs</h2>
@@ -24,6 +25,7 @@
       </nav>
 
       <div>
+        
         <a href="">Subir CV</a>
       </div>
     </header>
@@ -62,7 +64,7 @@
 
           <div id="filters">
             <select name="technology" id="technology-jobs">
-              <option value="">Tecnologia</option>
+              <option value="all">Tecnologia</option>
               <option value="swift">swift</option>
               <option value="javascript">Javascript</option>
               <option value="python">Python</option>
@@ -70,15 +72,15 @@
             </select>
 
             <select name="location" id="location-jobs">
-              <option value="">Ubicacion</option>
+              <option value="all">Ubicacion</option>
               <option value="remoto">Remoto</option>
               <option value="cdmx">Ciudad de Mexico</option>
               <option value="guadalajara">Guadalajara</option>
               <option value="monterrey">Monterrey</option>
             </select>
 
-            <select name="technology" id="experience-level">
-              <option value="">Nivel de experiencia</option>
+            <select name="experience" id="experience-jobs">
+              <option value="all">Nivel de experiencia</option>
               <option value="junior">Junior</option>
               <option value="mid">Mid</option>
               <option value="senior">Senior</option>
@@ -92,7 +94,12 @@
       <h1 class="title">Resultados de busqueda</h1>
 
       <div class="jobs-listings">
-        <article  class="job-listing-card" data-technology="javascript">
+        <article
+          class="job-listing-card"
+          data-technology="javascript"
+          data-location="remoto"
+          data-experience="mid"
+        >
           <div>
             <h3>Ingeniero de Software</h3>
             <small>Tech Solutions Inc. | Remoto</small>
@@ -108,7 +115,12 @@
           </button>
         </article>
 
-        <article class="job-listing-card " data-technology="python">
+        <article
+          class="job-listing-card"
+          data-technology="python"
+          data-location="cdmx"
+          data-experience="senior"
+        >
           <div>
             <h3>Analista de Datos</h3>
             <small>Data Driven Co. | Ciudad de México</small>
@@ -121,7 +133,31 @@
           <button class="button-apply-job">Aplicar</button>
         </article>
 
-        <article id="job-mobile" class="job-listing-card" data-technology="swift" >
+        <article
+          class="job-listing-card"
+          data-technology="javascript"
+          data-location="monterrey"
+          data-experience="junior"
+        >
+          <div>
+            <h3>Desarrollador Frontend (React)</h3>
+            <small>UI Factory | Monterrey</small>
+            <p>
+              Buscamos un perfil junior con bases sólidas en JavaScript y
+              experiencia con React. Valorable conocimiento de CSS moderno y
+              consumo de APIs.
+            </p>
+          </div>
+          <button class="button-apply-job">Aplicar</button>
+        </article>
+
+        <article
+          id="job-mobile"
+          class="job-listing-card"
+          data-technology="swift"
+          data-location="guadalajara"
+          data-experience="junior"
+        >
           <div>
             <h3>
               <a class="links_ofertas" href="OfertaEjercicio2.html">
@@ -138,7 +174,12 @@
           <button class="button-apply-job">Aplicar</button>
         </article>
 
-        <article class="job-listing-card" data-technology="Azure" >
+        <article
+          class="job-listing-card"
+          data-technology="azure"
+          data-location="remoto"
+          data-experience="mid"
+        >
           <div>
             <h3>Ingeniero de DevOps</h3>
             <small>Cloud Services SA | Remoto</small>
@@ -150,6 +191,23 @@
             </p>
           </div>
           <button id="aplicar" class="button-apply-job">Aplicar</button>
+        </article>
+
+        <article
+          class="job-listing-card"
+          data-technology="azure"
+          data-location="cdmx"
+          data-experience="senior"
+        >
+          <div>
+            <h3>Arquitecto Cloud (Azure)</h3>
+            <small>Enterprise Cloud MX | Ciudad de México</small>
+            <p>
+              Rol senior para diseñar arquitecturas en Azure, gobernanza,
+              seguridad y despliegues con infraestructura como código.
+            </p>
+          </div>
+          <button class="button-apply-job">Aplicar</button>
         </article>
       </div>
     </section>

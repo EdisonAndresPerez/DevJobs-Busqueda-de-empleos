@@ -1,14 +1,15 @@
 [
   {
     "id": "7a4d1d8b-1e45-4d8c-9f1a-8c2f9a9121a4",
-    "titulo": "Desarrollador de Software Senior",
+    "titulo": "Ingeniero de Software",
     "empresa": "Tech Solutions Inc.",
     "ubicacion": "Remoto",
     "descripcion": "Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScript, React y Node.js. El candidato ideal debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicación.",
     "data": {
-      "technology": ["react", "node", "javascript"],
+      "technology": "javascript",
+      "technologies": ["javascript", "react", "node"],
       "modalidad": "remoto",
-      "nivel": "senior"
+      "nivel": "mid"
     }
   },
   {
@@ -19,7 +20,21 @@
     "descripcion": "Estamos buscando un analista de datos con experiencia en el manejo de grandes conjuntos de datos y herramientas de visualización. Se requiere conocimiento en SQL, Python y R.",
     "data": {
       "technology": "python",
+      "technologies": ["sql", "python", "r"],
       "modalidad": "cdmx",
+      "nivel": "senior"
+    }
+  },
+  {
+    "id": "1d6f289d-9f2a-4cd8-9c13-9a0cfb8b64c1",
+    "titulo": "Desarrollador Frontend (React)",
+    "empresa": "UI Factory",
+    "ubicacion": "Monterrey",
+    "descripcion": "Buscamos un perfil junior con bases sólidas en JavaScript y experiencia con React. Valorable conocimiento de CSS moderno y consumo de APIs.",
+    "data": {
+      "technology": "javascript",
+      "technologies": ["javascript", "react", "css", "apis"],
+      "modalidad": "monterrey",
       "nivel": "junior"
     }
   },
@@ -30,9 +45,10 @@
     "ubicacion": "Guadalajara",
     "descripcion": "Buscamos un desarrollador de aplicaciones móviles con experiencia en iOS y/o Android. El candidato debe tener conocimientos en Swift, Kotlin y el desarrollo de interfaces de usuario.",
     "data": {
-      "technology": "mobile",
+      "technology": "swift",
+      "technologies": ["swift", "kotlin", "ios", "android"],
       "modalidad": "guadalajara",
-      "nivel": "mid-level"
+      "nivel": "junior"
     }
   },
   {
@@ -42,140 +58,61 @@
     "ubicacion": "Remoto",
     "descripcion": "Estamos buscando un ingeniero de DevOps con experiencia en la gestión de infraestructuras en la nube, automatización de procesos y herramientas de integración continua. Se requiere conocimiento en AWS, Azure o GCP.",
     "data": {
-      "technology": "mobile",
+      "technology": "azure",
+      "technologies": ["aws", "azure", "gcp", "ci/cd", "automation"],
       "modalidad": "remoto",
-      "nivel": "mid-level"
-    }
-  },
-  {
-    "id": "a9f31a8e-ec38-4fd3-9114-88cc6d37a92b",
-    "titulo": "Diseñador UX/UI",
-    "empresa": "Creative Minds Studio",
-    "ubicacion": "Barcelona",
-    "descripcion": "Estamos buscando un diseñador UX/UI con pasión por crear experiencias digitales excepcionales. Se requiere experiencia en Figma, diseño centrado en el usuario y colaboración con equipos de desarrollo.",
-    "data": {
-      "technology": "mobile",
-      "modalidad": "barcelona",
-      "nivel": "mid-level"
-    }
-  },
-  {
-    "id": "c1b65b42-68c5-4f1c-a8c2-8d52c5a7a5d1",
-    "titulo": "Administrador de Bases de Datos",
-    "empresa": "Secure Data Corp.",
-    "ubicacion": "Buenos Aires",
-    "descripcion": "Se busca un administrador de bases de datos con experiencia en PostgreSQL y MySQL. El candidato deberá asegurar la disponibilidad, seguridad y rendimiento de las bases de datos de producción.",
-    "data": {
-      "technology": "mobile",
-      "modalidad": "bsas",
-      "nivel": "mid-level"
-    }
-  },
-  {
-    "id": "bb8f2a99-6a20-4f9e-912a-16f54a49b8c3",
-    "titulo": "Especialista en Ciberseguridad",
-    "empresa": "SafeNet Solutions",
-    "ubicacion": "Remoto",
-    "descripcion": "Buscamos un especialista en ciberseguridad con conocimientos en protección de infraestructuras, análisis de vulnerabilidades y respuesta ante incidentes. Se valorará experiencia con SIEM y certificaciones de seguridad.",
-    "data": {
-      "technology": "mobile",
-      "modalidad": "remoto",
-      "nivel": "mid-level"
-    }
-  },
-  {
-    "id": "fe7b2c54-4f47-4e2b-9e87-2b5413a6b24f",
-    "titulo": "Product Manager",
-    "empresa": "NextGen Technologies",
-    "ubicacion": "Madrid",
-    "descripcion": "Estamos buscando un Product Manager con experiencia en la definición y lanzamiento de productos digitales. Se requiere capacidad analítica, liderazgo y conocimiento en metodologías ágiles.",
-    "data": {
-      "technology": "mobile",
-      "modalidad": "madrid",
-      "nivel": "senior"
-    }
-  },
-  {
-    "id": "a71f7a92-56d9-4b42-9f16-cb29b40e5f2c",
-    "titulo": "Frontend Developer",
-    "empresa": "Bright Web Studio",
-    "ubicacion": "Valencia",
-    "descripcion": "Buscamos un desarrollador frontend con experiencia en React, TypeScript y Tailwind CSS. Se valorará conocimiento en optimización de rendimiento y accesibilidad web.",
-    "data": {
-      "technology": "react",
-      "modalidad": "valencia",
-      "nivel": "mid-level"
-    }
-  },
-  {
-    "id": "f91e4c7b-3840-43da-8ad7-3a52e2a8cf1d",
-    "titulo": "Backend Developer",
-    "empresa": "APIWorks",
-    "ubicacion": "Bogotá",
-    "descripcion": "Estamos buscando un desarrollador backend con experiencia en Node.js, Express y bases de datos NoSQL. Se requiere conocimiento en arquitectura de microservicios.",
-    "data": {
-      "technology": "node",
-      "modalidad": "bogota",
       "nivel": "mid"
     }
   },
   {
-    "id": "b65a3c9f-b174-4d86-b8a2-9cf9b1e13a22",
-    "titulo": "Ingeniero de Machine Learning",
-    "empresa": "AI Labs",
-    "ubicacion": "Remoto",
-    "descripcion": "Buscamos un ingeniero de machine learning con experiencia en modelos de predicción y procesamiento de datos. Se valorará conocimiento en TensorFlow, PyTorch y MLOps.",
+    "id": "c8e4d2b6-4c37-4ce6-8f06-3c8b5bb1d8f6",
+    "titulo": "Arquitecto Cloud (Azure)",
+    "empresa": "Enterprise Cloud MX",
+    "ubicacion": "Ciudad de México",
+    "descripcion": "Rol senior para diseñar arquitecturas en Azure, gobernanza, seguridad y despliegues con infraestructura como código.",
     "data": {
-      "technology": "python",
-      "modalidad": "remoto",
+      "technology": "azure",
+      "technologies": ["azure", "iac", "security", "governance"],
+      "modalidad": "cdmx",
       "nivel": "senior"
     }
   },
   {
-    "id": "e8d13c45-36cb-46cf-8f9d-8a0a7b532b8b",
+    "id": "0c5e9a2b-0b85-4c0e-b4d3-7d4d7c8b2a10",
+    "titulo": "Backend Developer (Node.js)",
+    "empresa": "APIWorks",
+    "ubicacion": "Remoto",
+    "descripcion": "Buscamos un desarrollador backend con experiencia en Node.js y APIs REST. Se valora conocimiento de Express, bases de datos y buenas prácticas de testing.",
+    "data": {
+      "technology": "javascript",
+      "technologies": ["javascript", "node", "express", "rest", "testing"],
+      "modalidad": "remoto",
+      "nivel": "mid"
+    }
+  },
+  {
+    "id": "5b9c11a7-8e34-4b6f-a8d2-2e6c0a4dfc11",
     "titulo": "QA Automation Engineer",
     "empresa": "Quality First",
-    "ubicacion": "Lima",
-    "descripcion": "Se busca ingeniero de QA con experiencia en automatización de pruebas utilizando herramientas como Selenium, Cypress o Playwright. Conocimiento deseado en CI/CD.",
+    "ubicacion": "Ciudad de México",
+    "descripcion": "Se busca QA con experiencia en automatización de pruebas. Conocimiento de Selenium o Cypress, manejo de reportes y nociones de CI/CD.",
     "data": {
-      "technology": "mobile",
-      "modalidad": "lima",
-      "nivel": "mid-level"
+      "technology": "python",
+      "technologies": ["python", "selenium", "cypress", "ci/cd"],
+      "modalidad": "cdmx",
+      "nivel": "mid"
     }
   },
   {
-    "id": "d2e93b8a-0b41-4d09-9a52-36a0f418d493",
-    "titulo": "Administrador de Sistemas",
-    "empresa": "InfraTech Global",
-    "ubicacion": "Santiago de Chile",
-    "descripcion": "Buscamos un administrador de sistemas con experiencia en Linux, Docker y monitoreo de servidores. Conocimiento en scripting Bash o Python será un plus.",
+    "id": "c2d7c7e3-4a2d-4c8b-9f91-8b3e1d2f9a44",
+    "titulo": "iOS Developer",
+    "empresa": "Mobile Apps Ltd.",
+    "ubicacion": "Guadalajara",
+    "descripcion": "Buscamos desarrollador iOS con experiencia en Swift y consumo de APIs. Se valoran conocimientos en arquitectura, pruebas y buenas prácticas.",
     "data": {
-      "technology": "mobile",
-      "modalidad": "santiago",
-      "nivel": "mid-level"
-    }
-  },
-  {
-    "id": "cc0c1fae-4e85-4e2c-9b02-f12f9df8a2c9",
-    "titulo": "Scrum Master",
-    "empresa": "Agile Minds",
-    "ubicacion": "Madrid",
-    "descripcion": "Estamos buscando un Scrum Master con experiencia en metodologías ágiles y gestión de equipos multidisciplinarios. Certificación Scrum Master deseable.",
-    "data": {
-      "technology": "mobile",
-      "modalidad": "madrid",
-      "nivel": "mid-level"
-    }
-  },
-  {
-    "id": "a2f1d8c6-b72c-45f5-bcc5-5c1d1f39b0b1",
-    "titulo": "Soporte Técnico Nivel 2",
-    "empresa": "HelpDesk Pro",
-    "ubicacion": "Monterrey",
-    "descripcion": "Buscamos un técnico de soporte con habilidades en resolución de incidencias, redes y sistemas operativos. Se requiere atención al detalle y excelente trato con el usuario.",
-    "data": {
-      "technology": "mobile",
-      "modalidad": "monterrey",
+      "technology": "swift",
+      "technologies": ["swift", "ios", "apis", "testing"],
+      "modalidad": "guadalajara",
       "nivel": "junior"
     }
   }

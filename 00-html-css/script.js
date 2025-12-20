@@ -46,13 +46,63 @@ document.addEventListener("click", (evento) => {
 //});
 
 
+
+
+
 //crear funcion para manejar los filtros
 //usando delegeacion de eventos
 const filtersDiv = document.querySelector("#filters");
+let technologyFilterValue = "all";
+let locationFilterValue = "all";
 filtersDiv.addEventListener("change", function (evento) {
   const filter = evento.target;
 
-  if (filter.tagName == "SELECT") {
+  if (filter.tagName === "SELECT") {
+    if (filter.id === "technology-jobs") {
+      technologyFilterValue = filter.value;
+    }
+
+    if (filter.id === "location-jobs") {
+      locationFilterValue = filter.value;
+    }
+
+    if ( filter.id === "experience-jobs"){
+      experienceFilterValue = filter.value;
+    }
+
+
+    filtarOfertas();
     console.log(`Filtro cambiado: ${filter.id} = ${filter.value}`);
+    console.log({ technologyFilterValue, locationFilterValue });
   }
-})
+});
+
+//funcion para filtar ofertas
+const ofertas = document.querySelectorAll(".job-listing-card");
+
+function filtarOfertas() {
+  ofertas.forEach((oferta) => {
+    const matchTechnology =
+      technologyFilterValue === "tecnologias" ||
+      technologyFilterValue === "all" ||
+      oferta.dataset.technology === technologyFilterValue;
+
+    const matchLocation =
+      locationFilterValue === "ubicaciones" ||
+      locationFilterValue === "all" ||
+      oferta.dataset.location === locationFilterValue;
+
+    const matchExperience =
+      experienceFilterValue === "all" ||
+      oferta.dataset.experience === experienceFilterValue;
+
+    const mostrar = matchTechnology && matchLocation && matchExperience;
+
+    if (mostrar) {
+      // No forzar "block" para no romper estilos/layout
+      oferta.style.removeProperty("display");
+    } else {
+      oferta.style.display = "none";
+    }
+  });
+}
