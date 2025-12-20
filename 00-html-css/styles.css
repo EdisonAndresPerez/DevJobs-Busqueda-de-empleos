@@ -403,6 +403,11 @@ article {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 1rem;
 
+  /* Permite ocultar ofertas con el atributo HTML `hidden` */
+  article[hidden] {
+    display: none !important;
+  }
+
   article {
     background: none;
     box-shadow: none;

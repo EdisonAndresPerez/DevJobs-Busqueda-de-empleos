@@ -120,4 +120,29 @@ function logSearchValue(evento) {
 
 searchInput?.addEventListener("input", logSearchValue);
 
+// Búsqueda por título (solo input, sin tocar filtros)
+function filtrarPorTitulo(termino) {
+  const ofertas = document.querySelectorAll(".job-listing-card");
+  const normalizado = (termino || "").trim().toLowerCase();
+
+  ofertas.forEach((oferta) => {
+    const titulo = oferta.querySelector("h3")?.textContent?.toLowerCase() ?? "";
+    const match = normalizado === "" || titulo.includes(normalizado);
+
+    // Usamos `hidden` para no interferir con el display que manejan tus filtros
+    oferta.hidden = !match;
+  });
+}
+
+searchInput?.addEventListener("input", (evento) => {
+  filtrarPorTitulo(evento.target.value);
+});
+
+// Evita que Enter recargue la página (el input está dentro de un <form>)
+const searchForm = searchInput?.closest?.("form");
+searchForm?.addEventListener("submit", (evento) => {
+  evento.preventDefault();
+  filtrarPorTitulo(searchInput.value);
+});
+
 //funcion debounce para filtar por titulo de las ofertas de la api
