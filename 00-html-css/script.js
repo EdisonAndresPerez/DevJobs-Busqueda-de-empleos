@@ -39,7 +39,20 @@ document.addEventListener("click", (evento) => {
   }
 });
 
-const filter = document.querySelector("#technology-jobs");
-filter.addEventListener("change", function () {
-  console.log(filter.value);
-});
+//Filtar Tecnologia seleccionada en consola
+//const filter = document.querySelector("#technology-jobs");
+//filter.addEventListener("change", function () {
+//  console.log(filter.value);
+//});
+
+
+//crear funcion para manejar los filtros
+//usando delegeacion de eventos
+const filtersDiv = document.querySelector("#filters");
+filtersDiv.addEventListener("change", function (evento) {
+  const filter = evento.target;
+
+  if (filter.tagName == "SELECT") {
+    console.log(`Filtro cambiado: ${filter.id} = ${filter.value}`);
+  }
+})
