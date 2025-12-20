@@ -602,3 +602,10 @@ nav[aria-label="Breadcrumb"] a:focus {
   justify-content: flex-end;
   padding: 2rem 1rem;
 }
+
+
+.div-button{
+
+  display: flex;
+  gap: 10px;
+}

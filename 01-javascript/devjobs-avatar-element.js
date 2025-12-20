@@ -11,7 +11,7 @@ class DevJobsAvatar extends HTMLElement {
 
   render() {
     const service = this.getAttribute('service') ?? 'github'
-    const username = this.getAttribute('username') ?? 'midudev'
+    const username = this.getAttribute('username') ?? 'EdisonDev'
     const size = this.getAttribute('size') ?? '40'
 
     const url = this.createUrl(service, username)
