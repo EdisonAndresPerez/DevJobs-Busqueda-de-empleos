@@ -1,45 +1,39 @@
+//Seleccionamos el contenedor donde se agregarán los artículos
+const containerArticles = document.querySelector(".jobs-listings");
 
-
-
+if (!containerArticles) {
+  throw new Error("No se encontró el contenedor .jobs-listings");
+}
 
 //Creamos la llamada a la API para obtener los datos del JSON
 //Datos traidos de data.json
-fetch('../01-javascript/data.json')
-.then(response => {
+fetch("../01-javascript/data.json")
+  .then((response) => {
     return response.json();
-})
-.then((data) => {
-    data.forEach(data => {
-        const article = document.createElement('article');
-        article.classList.add('job-listing-card');
+  })
+  .then((jobs) => {
+    // Limpia los artículos actuales (evita duplicados si ya existen en el HTML)
+    containerArticles.innerHTML = "";
 
-        article.dataset.technology = data.technology.toLowerCase();
-        article.dataset.location = data.location.toLowerCase();
-        article.dataset.experience = data.experience.toLowerCase();
+    jobs.forEach((job) => {
+      const article = document.createElement("article");
+      article.classList.add("job-listing-card");
 
-        //Usaremos innerHTML para agregar el contenido al article
-        article.innerHTML = ` 
-         <article
-          class="job-listing-card"
-          data-technology="javascript"
-          data-location="remoto"
-          data-experience="mid"
-        >
-          <div>
-            <h3>${data.title}</h3>
-            <small>Tech Solutions Inc. | Remoto</small>
-            <p>
-              Buscamos un ingeniero de software con experiencia en desarrollo
-              web y conocimientos en JavaScript, React y Node.js. El candidato
-              ideal debe ser capaz de trabajar en equipo y tener buenas
-              habilidades de comunicación.
-            </p>
-          </div>
-          <button class="button-apply-job" id="boton-importante">
-            Aplicar
-          </button>
-        </article>
-        `
-    })
+      // En tu JSON los datos están dentro de job.data y son strings (no funciones)
+      article.dataset.technology = job.data.technology;
+      article.dataset.location = job.data.modalidad;
+      article.dataset.experience = job.data.nivel;
 
-})
+      // Usamos innerHTML para agregar el contenido al article
+      article.innerHTML = `
+        <div>
+          <h3>${job.titulo}</h3>
+          <small>${job.empresa} | ${job.ubicacion}</small>
+          <p>${job.descripcion}</p>
+        </div>
+        <button class="button-apply-job">Aplicar</button>
+      `;
+
+      containerArticles.appendChild(article);
+    });
+  });

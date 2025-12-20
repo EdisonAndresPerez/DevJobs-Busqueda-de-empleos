@@ -1,3 +1,4 @@
+
 // Selecciona el boton por su ID
 // En el documento HTML, asegurate de que el boton tenga el atributo id="aplicar"
 //const botonesAplicar = document.querySelectorAll(".button-apply-job");
@@ -15,8 +16,8 @@
 //});
 
 //Forma correcta y actualizada
+
 const jobsListings = document.querySelector(".jobs-listings");
-//
 jobsListings.addEventListener("click", function (evento) {
   if (evento.target.classList.contains("button-apply-job")) {
     evento.target.textContent = "Aplicado";
@@ -44,6 +45,8 @@ document.addEventListener("click", (evento) => {
 //filter.addEventListener("change", function () {
 //  console.log(filter.value);
 //});
+
+
 
 //crear funcion para manejar los filtros
 //usando delegeacion de eventos
@@ -77,10 +80,10 @@ filtersDiv.addEventListener("change", function (evento) {
   }
 });
 
-//funcion para filtar ofertas
-const ofertas = document.querySelectorAll(".job-listing-card");
 
+//funcion para filtar ofertas
 function filtarOfertas() {
+  const ofertas = document.querySelectorAll(".job-listing-card");
   ofertas.forEach((oferta) => {
     const matchTechnology =
       technologyFilterValue === "tecnologias" ||
