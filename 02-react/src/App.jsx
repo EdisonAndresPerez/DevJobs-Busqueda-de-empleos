@@ -8,7 +8,7 @@ import Error from "./components/Error";
 function App() {
   const currentPage = window.location.pathname;
 
-  let page = <Error/>;
+  let page = <Error />;
 
   if (currentPage == "/") {
     page = <Home />;
