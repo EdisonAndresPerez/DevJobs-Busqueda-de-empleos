@@ -1,17 +1,18 @@
+//hook useState
 import { useState } from "react";
 
-
-
- export const JobCard = ({ job }) => {
-
-  const [isApplied, setIsApplied] = useState(false)
+export const JobCard = ({ job }) => {
+  //estado para inicializarlo de boton aplicar
+  const [isApplied, setIsApplied] = useState(false);
 
   const handleApplyClick = () => {
-    setIsApplied(true)
-  }
+    setIsApplied(true);
+  };
 
-  const buttonClasses = isApplied ? 'button-apply-job is-applied' : 'button-apply-job'
-  const buttonText = isApplied ? 'Aplicado' : 'Aplicar'
+  const buttonClasses = isApplied
+    ? "button-apply-job is-applied"
+    : "button-apply-job";
+  const buttonText = isApplied ? "Aplicado" : "Aplicar";
 
   return (
     <article
@@ -27,9 +28,9 @@ import { useState } from "react";
         </small>
         <p>{job.descripcion}</p>
       </div>
-      <button
-      onClick={handleApplyClick}
-       className={buttonClasses}>{buttonText}</button>
+      <button onClick={handleApplyClick} className={buttonClasses}>
+        {buttonText}
+      </button>
     </article>
   );
 };

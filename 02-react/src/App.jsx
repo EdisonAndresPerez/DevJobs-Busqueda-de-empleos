@@ -6,21 +6,30 @@ import { Header } from "./components/header/Header";
 import { Navegation } from "./components/navegation/Navegation";
 import { JobListings } from "./components/jobListings/JobListings";
 
-const RESULTS_PER_PAGE = 5;
+const RESULTS_PER_PAGE = 3;
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({ search: "", technology: "" });
 
   // Filtrar los datos por título y tecnología
+  const search = (filters.search ?? "").trim().toLowerCase();
+  const technology = (filters.technology ?? "").trim();
+  const location = (filters.location ?? "").trim();
+  const experienceLevel = (filters["experience-level"] ?? "").trim();
+
+  const matchesSelect = (filterValue, jobValue) =>
+    filterValue === "" || jobValue === filterValue;
+
   const filteredData = data.filter((job) => {
-    const titleMatch = job.titulo
-      .toLowerCase()
-      .includes(filters.search.toLowerCase());
-    const techMatch = !filters.technology || filters.technology === "" || job.data.technology === filters.technology;
-const locationMatch = !filters.location || filters.location === "" || filters.location === " " || job.data.modalidad === filters.location;
-const experienceMatch = !filters["experience-level"] || filters["experience-level"] === "" || job.data.nivel === filters["experience-level"];
-    return titleMatch && techMatch && locationMatch && experienceMatch;
+    const title = (job.titulo && job.data.technology || "").toLowerCase();
+
+    return (
+      (search === "" || title.includes(search)) &&
+      matchesSelect(technology, job.data.technology) &&
+      matchesSelect(location, job.data.modalidad) &&
+      matchesSelect(experienceLevel, job.data.nivel)
+    );
   });
 
   const totalPage = Math.ceil(filteredData.length / RESULTS_PER_PAGE);
@@ -30,6 +39,7 @@ const experienceMatch = !filters["experience-level"] || filters["experience-leve
   );
 
   const handlePageChange = (page) => {
+    console.log("Cambiando a página:", page);
     setCurrentPage(page);
   };
 
@@ -46,7 +56,6 @@ const experienceMatch = !filters["experience-level"] || filters["experience-leve
           <h1>Encuentra tu próximo trabajo</h1>
           <p>Explora miles de oportunidades en el sector tecnológico.</p>
           <Form filters={filters} onFilterChange={handleFilterChange} />
-          <span id="filter-selected-value"></span>
         </section>
         <section>
           <JobListings jobs={pagedResults} />
