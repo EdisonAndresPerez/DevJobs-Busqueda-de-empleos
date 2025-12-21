@@ -16,7 +16,6 @@ function App() {
   } else if (currentPage == "/search") {
     page = <Search />;
   }
-
   useEffect(() => {
     window.addEventListener("popstate", () => {
       console.log("prueba de cambio de url");
