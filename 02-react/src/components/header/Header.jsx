@@ -16,11 +16,13 @@ export const Header = () => {
           <polyline points="16 18 22 12 16 6"></polyline>
           <polyline points="8 6 2 12 8 18"></polyline>
         </svg>
-        <a style={{textDecoration:"none", color:"inherit"}} href="/">DevJobs</a>
+        <Link style={{ textDecoration: "none", color: "inherit" }} href="/">
+          DevJobs
+        </Link>
       </h1>
 
       <nav>
-        <Link href="search">Empleos</Link>
+        <Link href="/search">Empleos</Link>
       </nav>
     </header>
   );

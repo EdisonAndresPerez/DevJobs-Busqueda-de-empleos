@@ -17,9 +17,17 @@ function App() {
     page = <Search />;
   }
   useEffect(() => {
-    window.addEventListener("popstate", () => {
-      console.log("prueba de cambio de url");
-    });
+    const handlePostState = () => {
+      setCurrentPage(window.location.pathname);
+    };
+
+    window.addEventListener("popstate", handlePostState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePostState);
+    }
+
+
   }, []);
 
   return (
