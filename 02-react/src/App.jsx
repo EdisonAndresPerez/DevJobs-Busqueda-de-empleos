@@ -1,14 +1,18 @@
 import { Header } from "./components/header/Header";
+import { Footer } from "./components/Footer/Footer";
 
 import Home from "./pages/Home";
-
-const RESULTS_PER_PAGE = 3;
+import Search from "./pages/Search";
 
 function App() {
+  const currentPage = window.location.pathname;
+
   return (
     <>
       <Header />
-      <Home />
+      {currentPage === "/" ? <Home /> : null} 
+      {currentPage === "/search" ? <Search /> : null}
+
       <Footer />
     </>
   );

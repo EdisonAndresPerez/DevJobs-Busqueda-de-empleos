@@ -22,7 +22,6 @@ export const SearchInput = ({ name, id, placeholder, value, onChange }) => {
       <input
         name={name}
         id={id}
-        required
         type="text"
         placeholder={placeholder}
         value={value}
