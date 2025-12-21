@@ -1,5 +1,13 @@
 
 export const SearchInput = ({ name, id, placeholder, value, onChange }) => {
+
+
+
+
+
+
+
+  
   return (
     <>
       <svg

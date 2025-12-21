@@ -1,3 +1,4 @@
+import Link from "../Link";
 
 export const Header = () => {
   return (
@@ -15,11 +16,11 @@ export const Header = () => {
           <polyline points="16 18 22 12 16 6"></polyline>
           <polyline points="8 6 2 12 8 18"></polyline>
         </svg>
-        DevJobs
+        <a style={{textDecoration:"none", color:"inherit"}} href="/">DevJobs</a>
       </h1>
 
       <nav>
-        <a href="">Empleos</a>
+        <Link href="search">Empleos</Link>
       </nav>
     </header>
   );

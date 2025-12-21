@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Header } from "./components/header/Header";
 import { Footer } from "./components/Footer/Footer";
 
@@ -6,7 +7,7 @@ import Search from "./pages/Search";
 import Error from "./components/Error";
 
 function App() {
-  const currentPage = window.location.pathname;
+  const [currentPage, setCurrentPage] = useState(window.location.pathname);
 
   let page = <Error />;
 
@@ -16,6 +17,12 @@ function App() {
     page = <Search />;
   }
 
+  useEffect(() => {
+    window.addEventListener("popstate", () => {
+      console.log("prueba de cambio de url");
+    });
+  }, []);
+
   return (
     <>
       <Header />
@@ -24,5 +31,4 @@ function App() {
     </>
   );
 }
-
 export default App;
