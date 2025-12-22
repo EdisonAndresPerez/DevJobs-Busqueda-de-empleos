@@ -406,6 +406,20 @@ article {
     /* valor original */
     align-items: start;
     gap: 1rem;
+    padding: 1rem;
+    justify-content: space-between;
+
+    .job-listing-card__content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .job-listing-card__content p {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+    }
 
     &.is-hidden {
       display: none;

@@ -25,7 +25,15 @@ export function useJobSearch(data, RESULTS_PER_PAGE = 3) {
     if (Array.isArray(jobValue)) {
       return jobValue.map(normalize).includes(filterValue);
     }
-    return normalize(jobValue) === filterValue;
+
+    const normalizedJobValue = normalize(jobValue);
+
+    // La API a veces trae technology como string con varias palabras: "react node javascript"
+    if (typeof jobValue === "string" && normalizedJobValue.includes(" ")) {
+      return normalizedJobValue.split(/\s+/).includes(filterValue);
+    }
+
+    return normalizedJobValue === filterValue;
   };
 
   const filteredData = source.filter((job) => {
@@ -38,7 +46,7 @@ export function useJobSearch(data, RESULTS_PER_PAGE = 3) {
     return (
       (search === "" || haystack.includes(search)) &&
       matchesSelect(technology, job?.data?.technology) &&
-      matchesSelect(location, job?.ubicacion) &&
+      matchesSelect(location, job?.data?.modalidad) &&
       matchesSelect(experienceLevel, job?.data?.nivel)
     );
   });
