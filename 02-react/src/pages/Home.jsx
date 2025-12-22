@@ -1,9 +1,6 @@
-import { UseRouter } from "../hooks/useRouter";
-
+import { useRouter } from "../hooks/UseRouter";
 export const Home = () => {
-  const { navigate } = UseRouter();
-
-
+  const { navigate } = useRouter();
 
   const handleSearch = (event) => {
     event.preventDefault();

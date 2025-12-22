@@ -23,6 +23,7 @@ export const Header = () => {
 
       <nav>
         <Link href="/search">Empleos</Link>
+         <Link href="/login">Iniciar Sesión</Link>
       </nav>
     </header>
   );

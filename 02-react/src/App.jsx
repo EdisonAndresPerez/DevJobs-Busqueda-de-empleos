@@ -3,6 +3,8 @@ import { Footer } from "./components/Footer/Footer";
 
 import Home from "./pages/Home";
 import Search from "./pages/Search";
+import Login from "./pages/Login";
+
 
 import Route from './Route';
 
@@ -13,6 +15,7 @@ function App() {
       <Header />
       <Route path="/" component={Home} />
       <Route path="/search" component={Search} />
+      <Route path="/login" component={Login}  />
       <Footer />
     </>
   );
