@@ -3,7 +3,7 @@ export const TECHNOLOGIES = [
   { label: "JavaScript", value: "javascript" },
   { label: "Python", value: "python" },
   { label: "React", value: "react" },
-  { label: "Node.js", value: "nodejs" },
+  { label: "Node.js", value: "node" },
   { label: "Java", value: "java" },
   { label: "C#", value: "C#" },
   { label: "C++", value: "C++" },
@@ -12,7 +12,7 @@ export const TECHNOLOGIES = [
 ];
 
 export const LOCATIONS = [
-  {label: "Ubicación", value:" "},
+  { label: "Ubicación", value: "" },
   { label: "Remoto", value: "remoto" },
   { label: "Ciudad de México", value: "cdmx" },
   { label: "Guadalajara", value: "guadalajara" },
