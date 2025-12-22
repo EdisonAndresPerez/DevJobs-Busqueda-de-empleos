@@ -1,10 +1,10 @@
 import { createElement } from "react";
-import { UseRouter } from "./hooks/useRouter";
+import { useRouter } from "./hooks/UseRouter";
 
 export default function Route({ path, component: Component }) {
-    const { currentPage } = UseRouter();
+  const { currentPage } = useRouter();
 
-    if (currentPage !== path) return null;
+  if (currentPage !== path) return null;
 
-    return createElement(Component);
+  return createElement(Component);
 }

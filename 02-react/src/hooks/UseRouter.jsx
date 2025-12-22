@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function UseRouter() {
+export function useRouter() {
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
   const [currentSearch, setCurrentSearch] = useState(window.location.search);
 

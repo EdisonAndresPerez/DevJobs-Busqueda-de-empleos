@@ -7,7 +7,7 @@ import { JobListings } from "../components/jobListings/JobListings";
 
 const RESULTS_PER_PAGE = 3;
 
-const Home = () => {
+const Search = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({ search: "", technology: "" });
 
@@ -68,4 +68,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Search;
