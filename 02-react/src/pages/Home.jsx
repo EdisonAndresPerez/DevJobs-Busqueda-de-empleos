@@ -1,7 +1,7 @@
 const Home = () => {
 
 
-  const handleSubmit = () => {
+  const handleSearch = () => {
     event.preventDefault();
     console.log("Buscando empleo...");
   }
@@ -44,7 +44,7 @@ const Home = () => {
               </svg>
               <input
               name="search"
-              onChange={handleSubmit}
+              onSubmit={handleSearch}
                 type="text"
                 placeholder="Buscar empleos por titulo, habilidades o empresa"
               />
