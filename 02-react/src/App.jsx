@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Header } from "./components/header/Header";
 import { Footer } from "./components/Footer/Footer";
 
@@ -6,8 +5,10 @@ import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Error from "./components/Error";
 
+import { UseRouter } from "./hooks/useRouter";
+
 function App() {
-  const [currentPage, setCurrentPage] = useState(window.location.pathname);
+  const { currentPage } = UseRouter();
 
   let page = <Error />;
 
@@ -16,19 +17,6 @@ function App() {
   } else if (currentPage == "/search") {
     page = <Search />;
   }
-  useEffect(() => {
-    const handlePostState = () => {
-      setCurrentPage(window.location.pathname);
-    };
-
-    window.addEventListener("popstate", handlePostState);
-
-    return () => {
-      window.removeEventListener("popstate", handlePostState);
-    }
-
-
-  }, []);
 
   return (
     <>
