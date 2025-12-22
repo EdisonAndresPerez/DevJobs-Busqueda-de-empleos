@@ -2,7 +2,7 @@
 const Link = ({ href, children, ...restoOfProps }) => {
     
 
-    const handledClick = () => {
+    const handledClick = (event) => {
       event.preventDefault();
         window.history.pushState({}, "", href);
         window.dispatchEvent(new PopStateEvent('popstate'));

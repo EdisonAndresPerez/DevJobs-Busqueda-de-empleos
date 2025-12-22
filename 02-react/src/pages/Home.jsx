@@ -1,13 +1,21 @@
-const Home = () => {
+import { UseRouter } from "../hooks/useRouter";
+
+export const Home = () => {
+  const { navigate } = UseRouter();
 
 
-  const handleSearch = () => {
+
+  const handleSearch = (event) => {
     event.preventDefault();
-    console.log("Buscando empleo...");
-  }
+    const formData = new FormData(event.target);
+    const searchTerm = formData.get("search");
 
+    const url = searchTerm
+      ? `/search?query=${encodeURIComponent(searchTerm)}`
+      : "/search";
 
-
+    navigate(url);
+  };
 
   return (
     <>
@@ -21,7 +29,7 @@ const Home = () => {
             proxima oportunidad
           </p>
 
-          <form role="search">
+          <form role="search" onSubmit={handleSearch}>
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -43,8 +51,7 @@ const Home = () => {
                 <path d="M20.2 20.2l1.8 1.8" />
               </svg>
               <input
-              name="search"
-              onSubmit={handleSearch}
+                name="search"
                 type="text"
                 placeholder="Buscar empleos por titulo, habilidades o empresa"
               />
@@ -57,7 +64,7 @@ const Home = () => {
           <h2 style={{ display: "flex", justifyContent: "center" }}>
             ¿Por qué DevJobs?
           </h2>
-          <p style={{display: " flex"}}>
+          <p style={{ display: " flex" }}>
             DevJobs es la principal bolsa de trabajo para desarrolladores.
             Conectamos a los desarrolladores con las mejores empresas del mundo.
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus
