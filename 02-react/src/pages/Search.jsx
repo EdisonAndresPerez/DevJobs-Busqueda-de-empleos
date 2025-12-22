@@ -9,12 +9,12 @@ import { useJobSearch } from "../hooks/useJobSearch";
 const RESULTS_PER_PAGE = 3;
 
 const Search = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log('Fetching job data...');
+    console.log("Fetching job data...");
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -27,8 +27,9 @@ const Search = () => {
 
         const result = await response.json();
         setData(result);
+        console.log(result)
       } catch (error) {
-        setError(error.message);
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -53,12 +54,17 @@ const Search = () => {
         <Form filters={filters} onFilterChange={handleFilterChange} />
       </section>
       <section>
-        <JobListings jobs={pagedResults} />
-        <Navegation
-          currentPage={currentPage}
-          totalPages={totalPage}
-          onPageChange={handlePageChange}
-        />
+        {loading && <p>Cargando ofertas de empleo...</p>}
+        {!loading && error && <p>Error: {error}</p>}
+        {!loading && !error && <JobListings jobs={pagedResults} />}
+
+        {!loading && !error && (
+          <Navegation
+            currentPage={currentPage}
+            totalPages={totalPage}
+            onPageChange={handlePageChange}
+          />
+        )}
       </section>
     </main>
   );
