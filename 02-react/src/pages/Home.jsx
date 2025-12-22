@@ -1,4 +1,14 @@
 const Home = () => {
+
+
+  const handleSubmit = () => {
+    event.preventDefault();
+    console.log("Buscando empleo...");
+  }
+
+
+
+
   return (
     <>
       <main>
@@ -33,6 +43,8 @@ const Home = () => {
                 <path d="M20.2 20.2l1.8 1.8" />
               </svg>
               <input
+              name="search"
+              onChange={handleSubmit}
                 type="text"
                 placeholder="Buscar empleos por titulo, habilidades o empresa"
               />
