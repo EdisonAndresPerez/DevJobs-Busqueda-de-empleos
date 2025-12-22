@@ -3,25 +3,16 @@ import { Footer } from "./components/Footer/Footer";
 
 import Home from "./pages/Home";
 import Search from "./pages/Search";
-import Error from "./components/Error";
 
-import { UseRouter } from "./hooks/useRouter";
+import Route from './Route';
 
 function App() {
-  const { currentPage } = UseRouter();
-
-  let page = <Error />;
-
-  if (currentPage == "/") {
-    page = <Home />;
-  } else if (currentPage == "/search") {
-    page = <Search />;
-  }
-
+ 
   return (
     <>
       <Header />
-      {page}
+      <Route path="/" component={Home} />
+      <Route path="/search" component={Search} />
       <Footer />
     </>
   );
