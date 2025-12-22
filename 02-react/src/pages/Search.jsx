@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 
-
 import { Form } from "../components/formulario";
-import data from "../data.json";
 
 import { Navegation } from "../components/navegation/Navegation";
 import { JobListings } from "../components/jobListings/JobListings";
@@ -11,6 +9,33 @@ import { useJobSearch } from "../hooks/useJobSearch";
 const RESULTS_PER_PAGE = 3;
 
 const Search = () => {
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    console.log('Fetching job data...');
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await fetch("https://jscamp-api.vercel.app/api/jobs");
+        if (!response.ok) {
+          throw new Error("Error al obtener los datos de la api");
+        }
+
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
   const {
     totalPage,
     pagedResults,

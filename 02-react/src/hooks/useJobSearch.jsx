@@ -1,9 +1,17 @@
 import { useState } from "react";
 
+const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
 export function useJobSearch(data, RESULTS_PER_PAGE = 3) {
   const [currentPage, setCurrentPage] = useState(1);
-  const [filters, setFilters] = useState({ search: "", technology: "" });
+  const [filters, setFilters] = useState({
+    search: "",
+    technology: "",
+    location: "",
+    "experience-level": "",
+  });
+
+  const source = Array.isArray(data) ? data : [];
 
   // Filtrar los datos por título y tecnología
   const search = (filters.search ?? "").trim().toLowerCase();
@@ -14,7 +22,7 @@ export function useJobSearch(data, RESULTS_PER_PAGE = 3) {
   const matchesSelect = (filterValue, jobValue) =>
     filterValue === "" || jobValue === filterValue;
 
-  const filteredData = data.filter((job) => {
+  const filteredData = source.filter((job) => {
     const haystack = `${job.titulo ?? ""} ${job.empresa ?? ""} ${
       job.descripcion ?? ""
     }`
@@ -23,13 +31,13 @@ export function useJobSearch(data, RESULTS_PER_PAGE = 3) {
 
     return (
       (search === "" || haystack.includes(search)) &&
-      matchesSelect(technology, job.data.technology) &&
-      matchesSelect(location, job.data.modalidad) &&
-      matchesSelect(experienceLevel, job.data.nivel)
+      matchesSelect(technology, job?.data?.technology) &&
+      matchesSelect(location, job?.data?.modalidad) &&
+      matchesSelect(experienceLevel, job?.data?.nivel)
     );
   });
 
-  const totalPage = Math.ceil(filteredData.length / RESULTS_PER_PAGE);
+  const totalPage = Math.max(1, Math.ceil(filteredData.length / RESULTS_PER_PAGE));
   const pagedResults = filteredData.slice(
     (currentPage - 1) * RESULTS_PER_PAGE,
     currentPage * RESULTS_PER_PAGE
@@ -37,7 +45,7 @@ export function useJobSearch(data, RESULTS_PER_PAGE = 3) {
 
   const handlePageChange = (page) => {
     console.log("Cambiando a página:", page);
-    setCurrentPage(page);
+    setCurrentPage(clamp(page, 1, totalPage));
   };
 
   const handleFilterChange = (newFilters) => {
