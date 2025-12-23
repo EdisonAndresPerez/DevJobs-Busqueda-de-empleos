@@ -9,8 +9,10 @@ const buildJobsUrl = (filters, { limit, offset } = {}) => {
   const experiencia = (filters?.["experience-level"] ?? "").toString().trim();
   const location = (filters?.location ?? "").toString().trim();
 
-  if (search) params.set("search", search);
-  if (technology) params.set("technology", technology);
+  // Nota: esta API no filtra por `search`/`query`. Para mantener filtrado 100% server-side,
+  // usamos el texto como fallback de `technology` cuando no hay un technology seleccionado.
+  const technologyQuery = technology || search;
+  if (technologyQuery) params.set("technology", technologyQuery);
   if (experiencia) params.set("nivel", experiencia);
   if (location) params.set("modalidad", location);
 

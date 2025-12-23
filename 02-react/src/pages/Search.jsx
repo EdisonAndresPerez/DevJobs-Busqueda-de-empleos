@@ -8,12 +8,8 @@ import { useJobsApi } from "../hooks/useJobsApi";
 const RESULTS_PER_PAGE = 3;
 
 const Search = () => {
-  const {
-    handlePageChange,
-    handleFilterChange,
-    filters,
-    currentPage,
-  } = useJobSearch();
+  const { handlePageChange, handleFilterChange, filters, currentPage } =
+    useJobSearch();
 
   const { jobs, loading, error, totalPages } = useJobsApi(
     filters,
@@ -29,7 +25,11 @@ const Search = () => {
         <Form filters={filters} onFilterChange={handleFilterChange} />
       </section>
       <section>
-        {loading && <p>Cargando ofertas de empleo...</p>}
+        {loading && (
+          <p style={{ display: "flex", justifyContent: "center" }}>
+            Cargando ofertas de empleo...
+          </p>
+        )}
         {!loading && error && <p>Error: {error?.message ?? String(error)}</p>}
         {!loading && !error && <JobListings jobs={jobs} />}
         {!loading && !error && jobs.length === 0 && (

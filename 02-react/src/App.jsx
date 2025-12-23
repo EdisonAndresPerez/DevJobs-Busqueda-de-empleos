@@ -5,17 +5,15 @@ import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Login from "./pages/Login";
 
-
-import Route from './Route';
+import Route from "./Route";
 
 function App() {
- 
   return (
     <>
       <Header />
       <Route path="/" component={Home} />
       <Route path="/search" component={Search} />
-      <Route path="/login" component={Login}  />
+      <Route path="/login" component={Login} />
       <Footer />
     </>
   );
