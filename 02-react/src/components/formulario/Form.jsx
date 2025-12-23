@@ -2,11 +2,11 @@ import { TECHNOLOGIES, LOCATIONS, EXPERIENCE_LEVELS } from "./form.constants";
 import { SearchInput } from "./SearchInput";
 import { InputSelect } from "./InputSelect";
 
+let letterRandomInput = Math.random();
 export const Form = ({ filters, onFilterChange }) => {
 
   //creamos una variable de prueba  para ver como se rendereiza el input
-  let letterRandomInput = Math.random();
-
+  
   // Actualiza el filtro en tiempo real
   const handleInputChange = (event) => {
     //console.log para imprimir
