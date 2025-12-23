@@ -50,11 +50,17 @@ export const Form = ({ filters, onFilterChange }) => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+
+    if (name === "search") {
+      setSearchDraft(value); // escribe inmediato
+      return;
+    }
+
+    // Selects: inmediato
     onFilterChange({ [name]: value });
   };
 
   const handleSubmit = (event) => {
-    console.log("hola ");
     event.preventDefault();
   };
 
@@ -65,7 +71,7 @@ export const Form = ({ filters, onFilterChange }) => {
           name="search"
           id="empleos-search-input"
           placeholder="Buscar trabajos, empresas o habilidades"
-          value={filters.search}
+          value={searchDraft}
           onChange={handleInputChange}
         />
       </div>
