@@ -1,3 +1,5 @@
+
+
 import { useEffect, useState, useRef } from "react";
 
 import { TECHNOLOGIES, LOCATIONS, EXPERIENCE_LEVELS } from "./form.constants";
@@ -5,8 +7,26 @@ import { SearchInput } from "./SearchInput";
 import { InputSelect } from "./InputSelect";
 
 export const Form = ({ filters, onFilterChange }) => {
-  const miRef = useRef("Referencia de ejemplo");
-  console.log(miRef.current);
+
+  //guardar info de lo que el usuario escriba en tiempo real
+  //se inicializa con el valor del filtro search
+  const [searchDraft, setSearchDraft] = useState(filters.search || "");
+
+  //ref para el timeout
+  //guarda el ID del timeout
+  const timeoutRef = useRef(null);
+  
+
+  //UseEffect para mantener el input sincronizado si el valor viene de afuera
+  useEffect(() => {
+    setSearchDraft(filters.search || "");
+  }, [filters.search]);
+
+
+  useEffect(()=> {
+    
+  })
+
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
