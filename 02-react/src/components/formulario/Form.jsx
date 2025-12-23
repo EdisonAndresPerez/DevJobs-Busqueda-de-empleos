@@ -1,21 +1,20 @@
+import { useEffect, useState, useRef } from "react";
+
 import { TECHNOLOGIES, LOCATIONS, EXPERIENCE_LEVELS } from "./form.constants";
 import { SearchInput } from "./SearchInput";
 import { InputSelect } from "./InputSelect";
 
-let letterRandomInput = Math.random();
 export const Form = ({ filters, onFilterChange }) => {
+  const miRef = useRef("Referencia de ejemplo");
+  console.log(miRef.current);
 
-  //creamos una variable de prueba  para ver como se rendereiza el input
-  
-  // Actualiza el filtro en tiempo real
   const handleInputChange = (event) => {
-    //console.log para imprimir
-    console.log(letterRandomInput);
     const { name, value } = event.target;
     onFilterChange({ [name]: value });
   };
 
   const handleSubmit = (event) => {
+    console.log("hola ");
     event.preventDefault();
   };
 
