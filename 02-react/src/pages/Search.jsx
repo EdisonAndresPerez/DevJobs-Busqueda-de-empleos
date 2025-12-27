@@ -1,11 +1,13 @@
 import { Form } from "../components/formulario";
 
+import { useEffect } from "react";
+
 import { Navegation } from "../components/navegation/Navegation";
 import { JobListings } from "../components/jobListings/JobListings";
 import { useJobSearch } from "../hooks/useJobSearch";
 import { useJobsApi } from "../hooks/useJobsApi";
 
-const RESULTS_PER_PAGE = 3;
+const RESULTS_PER_PAGE = 4;
 
 const Search = () => {
   const { handlePageChange, handleFilterChange, filters, currentPage } =
@@ -16,6 +18,11 @@ const Search = () => {
     currentPage,
     RESULTS_PER_PAGE
   );
+
+  useEffect(() => {
+    if (loading || error) return;
+    handlePageChange(currentPage, totalPages);
+  }, [currentPage, error, handlePageChange, loading, totalPages]);
 
   return (
     <main>

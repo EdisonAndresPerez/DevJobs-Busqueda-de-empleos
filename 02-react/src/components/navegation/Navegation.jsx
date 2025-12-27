@@ -6,18 +6,16 @@ export const Navegation = ({
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   const isFirstPage = currentPage === 1;
-  const isLastPage = currentPage == totalPages;
+  const isLastPage = currentPage === totalPages;
 
   const handlePrevClick = (event) => {
-    console.log("atras");
     event.preventDefault();
     if (isFirstPage === false) {
       onPageChange(currentPage - 1);
     }
   };
 
-  const handleNextCLick = (event) => {
-    console.log("siguiente");
+  const handleNextClick = (event) => {
     event.preventDefault();
     if (isLastPage === false) {
       onPageChange(currentPage + 1);
@@ -26,9 +24,15 @@ export const Navegation = ({
 
   const handleChangePage = (event, page) => {
     event.preventDefault();
-    if (page != currentPage) {
+    if (page !== currentPage) {
       onPageChange(page);
     }
+  };
+
+  const buildPageUrl = (page) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("page", String(page));
+    return `${url.pathname}?${url.searchParams.toString()}`;
   };
 
   const stylePrevButton = isFirstPage
@@ -41,7 +45,11 @@ export const Navegation = ({
   return (
     <nav className="pagination">
       {!isFirstPage && (
-        <a onClick={handlePrevClick} href="#" style={stylePrevButton}>
+        <a
+          onClick={handlePrevClick}
+          href={buildPageUrl(currentPage - 1)}
+          style={stylePrevButton}
+        >
           <svg
             width="16"
             height="16"
@@ -62,7 +70,7 @@ export const Navegation = ({
         return (
           <a
             key={key}
-            href="#"
+            href={buildPageUrl(page)}
             className={currentPage === page ? "is-active" : ""}
             onClick={(event) => handleChangePage(event, page)}
           >
@@ -72,7 +80,11 @@ export const Navegation = ({
       })}
 
       {!isLastPage && (
-        <a onClick={handleNextCLick} href="#" style={styleNextButton}>
+        <a
+          onClick={handleNextClick}
+          href={buildPageUrl(currentPage + 1)}
+          style={styleNextButton}
+        >
           <svg
             width="16"
             height="16"
