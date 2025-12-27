@@ -440,6 +440,34 @@ article {
   }
 }
 
+.jobs-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem 1rem;
+  color: var(--text-secondary);
+}
+
+.jobs-loading__spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  border-top-color: var(--primary-light);
+  animation: jobs-spin 0.8s linear infinite;
+}
+
+.jobs-loading__text {
+  color: var(--text-muted);
+}
+
+@keyframes jobs-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .pagination {
   display: flex;
   justify-content: center;

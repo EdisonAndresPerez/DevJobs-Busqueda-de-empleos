@@ -1,4 +1,4 @@
-import { useRouter } from "../hooks/UseRouter";
+import { useRouter } from "../hooks/useRouter";
 export const Home = () => {
   const { navigate } = useRouter();
 
@@ -8,7 +8,7 @@ export const Home = () => {
     const searchTerm = formData.get("search");
 
     const url = searchTerm
-      ? `/search?query=${encodeURIComponent(searchTerm)}`
+      ? `/search?page=1&search=${encodeURIComponent(searchTerm)}`
       : "/search";
 
     navigate(url);

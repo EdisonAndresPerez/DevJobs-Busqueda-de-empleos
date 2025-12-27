@@ -33,9 +33,10 @@ const Search = () => {
       </section>
       <section>
         {loading && (
-          <p style={{ display: "flex", justifyContent: "center" }}>
-            Cargando ofertas de empleo...
-          </p>
+          <div className="jobs-loading" role="status" aria-live="polite">
+            <span className="jobs-loading__spinner" aria-hidden="true" />
+            <p className="jobs-loading__text">Cargando ofertas de empleo...</p>
+          </div>
         )}
         {!loading && error && <p>Error: {error?.message ?? String(error)}</p>}
         {!loading && !error && <JobListings jobs={jobs} />}
