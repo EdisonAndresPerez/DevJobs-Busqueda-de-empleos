@@ -14,9 +14,11 @@ function App() {
   return (
     <>
       <Header />
-      <Route path="/" component={Home} />
-      <Route path="/search" component={Search} />
-      <Route path="/login" component={Login} />
+      <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/login" element={<Login />} />
+      </Routes>
       <Footer />
     </>
   );
