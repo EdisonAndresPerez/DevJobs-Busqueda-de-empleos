@@ -8,6 +8,7 @@ import { useJobSearch } from "../hooks/useJobSearch";
 import { useJobsApi } from "../hooks/useJobsApi";
 
 const RESULTS_PER_PAGE = 4;
+const MIN_LOADING_MS = 900;
 
 const Search = () => {
   const { handlePageChange, handleFilterChange, filters, currentPage } =
@@ -16,7 +17,8 @@ const Search = () => {
   const { jobs, loading, error, totalPages } = useJobsApi(
     filters,
     currentPage,
-    RESULTS_PER_PAGE
+    RESULTS_PER_PAGE,
+    MIN_LOADING_MS
   );
 
   useEffect(() => {

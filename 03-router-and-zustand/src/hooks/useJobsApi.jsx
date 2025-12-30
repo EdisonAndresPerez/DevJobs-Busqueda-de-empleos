@@ -1,5 +1,19 @@
 import { useState, useEffect } from "react";
 
+const sleep = (ms, signal) =>
+  new Promise((resolve, reject) => {
+    if (!ms || ms <= 0) return resolve();
+    if (signal?.aborted) return reject(new DOMException("Aborted", "AbortError"));
+
+    const timeoutId = setTimeout(resolve, ms);
+    const onAbort = () => {
+      clearTimeout(timeoutId);
+      reject(new DOMException("Aborted", "AbortError"));
+    };
+
+    signal?.addEventListener("abort", onAbort, { once: true });
+  });
+
 const buildJobsUrl = (filters, { limit, offset } = {}) => {
   const baseUrl = "https://jscamp-api.vercel.app/api/jobs";
   const params = new URLSearchParams();
@@ -23,7 +37,7 @@ const buildJobsUrl = (filters, { limit, offset } = {}) => {
   return qs ? `${baseUrl}?${qs}` : baseUrl;
 };
 
-export function useJobsApi(filters, page = 1, resultsPerPage = 3) {
+export function useJobsApi(filters, page = 1, resultsPerPage = 3, minLoadingMs = 0) {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -31,8 +45,11 @@ export function useJobsApi(filters, page = 1, resultsPerPage = 3) {
 
   useEffect(() => {
     const controller = new AbortController();
+    let isActive = true;
 
     const fetchData = async () => {
+      const startMs = performance.now();
+
       try {
         setLoading(true);
         setError(null);
@@ -48,18 +65,35 @@ export function useJobsApi(filters, page = 1, resultsPerPage = 3) {
         const result = await response.json();
         const pageData = Array.isArray(result?.data) ? result.data : [];
 
+        if (!isActive) return;
         setJobs(pageData);
         setTotal(Number(result?.total) || 0);
       } catch (error) {
         if (error?.name !== "AbortError") setError(error);
       } finally {
+        if (!isActive) return;
+
+        const elapsedMs = performance.now() - startMs;
+        const remainingMs = Math.max(0, Number(minLoadingMs) - elapsedMs);
+
+        try {
+          await sleep(remainingMs, controller.signal);
+        } catch (error) {
+          if (error?.name === "AbortError") return;
+        }
+
+        if (!isActive) return;
         setLoading(false);
       }
     };
 
     fetchData();
-    return () => controller.abort();
-  }, [filters, page, resultsPerPage]);
+
+    return () => {
+      isActive = false;
+      controller.abort();
+    };
+  }, [filters, page, resultsPerPage, minLoadingMs]);
 
   const totalPages = Math.max(1, Math.ceil(total / resultsPerPage));
 
