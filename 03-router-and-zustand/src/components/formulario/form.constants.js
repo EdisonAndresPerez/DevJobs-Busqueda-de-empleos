@@ -16,8 +16,8 @@ export const LOCATIONS = [
   { label: "Remoto", value: "remoto" },
   { label: "Ciudad de México", value: "cdmx" },
   { label: "Guadalajara", value: "guadalajara" },
-  { label: "Monterrey", value: "Monterrey" },
-  { label: "Barcelona", value: "Barcelona" },
+  { label: "Monterrey", value: "monterrey" },
+  { label: "Barcelona", value: "barcelona" },
 ];
 
 export const EXPERIENCE_LEVELS = [

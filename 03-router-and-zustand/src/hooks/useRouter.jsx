@@ -5,11 +5,10 @@ export function useRouter() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const navigateTo = (to) => {
-    navigate(to);
-  };
+  const navigateTo = (to) => navigate(to);
 
   return {
+    navigate: navigateTo,
     navigateTo,
     currentPage: location.pathname,
     currentSearch: location.search,
