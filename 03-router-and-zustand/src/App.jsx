@@ -7,6 +7,7 @@ import Error from "./components/Error";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Login from "./pages/Login";
+import Detaill from "./pages/Detaill";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/login" element={<Login />} />
+
+        <Route path="/detaill/:id" element={<Detaill />} />
 
         {/*  Ruta de error  */}
         <Route path="*" element={<Error />} />
