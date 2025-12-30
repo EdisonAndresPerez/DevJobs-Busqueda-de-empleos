@@ -1,20 +1,14 @@
+import {Link as NavLink} from "react-router";
+
 
 const Link = ({ href, children, ...restoOfProps }) => {
-    
-
-    const handledClick = (event) => {
-      event.preventDefault();
-        window.history.pushState({}, "", href);
-        window.dispatchEvent(new PopStateEvent('popstate'));
-    }
-
 
 
   return (
-   <a href={href}  {...restoOfProps}  onClick={handledClick}  >
-    {children}
-   </a>
-  )
-}
+    <NavLink to={href} {...restoOfProps}>
+      {children}
+    </NavLink>
+  );
+};
 
-export default Link
+export default Link;

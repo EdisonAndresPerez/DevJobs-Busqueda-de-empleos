@@ -1,6 +1,6 @@
 import { Header } from "./components/header/Header";
 import { Footer } from "./components/Footer/Footer";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { Routes, Route } from "react-router";
 
 import Error from "./components/Error";
 
@@ -12,11 +12,14 @@ function App() {
   return (
     <>
       <Header />
+      {/* Routes => contenedor que contiene todas las rutas */}
       <Routes>
+        {/*  Route => Definir cada ruta individual */}
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/login" element={<Login />} />
 
+        {/*  Ruta de error  */}
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
