@@ -1,4 +1,4 @@
-import { Link as NavLink } from "react-router-dom";
+import { Link as NavLink } from "react-router";
 
 
 const Link = ({ href, children, ...restoOfProps }) => {

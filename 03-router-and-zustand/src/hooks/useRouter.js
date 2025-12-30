@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router";
+import { useLocation } from "react-router";
   
 export function useRouter() {
   const navigate = useNavigate();

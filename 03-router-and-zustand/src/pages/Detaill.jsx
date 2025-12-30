@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 //para saber la id de la ruta
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 
 const Detaill = () => {
   const { id } = useParams();
@@ -25,7 +25,7 @@ const Detaill = () => {
       .finally(() => {
         setLoading(false);
       });
-  },[id]);
+  }, [id]);
 
   return (
     <>
