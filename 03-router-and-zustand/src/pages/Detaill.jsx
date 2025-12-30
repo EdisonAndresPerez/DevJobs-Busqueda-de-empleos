@@ -25,7 +25,7 @@ const Detaill = () => {
       .finally(() => {
         setLoading(false);
       });
-  });
+  },[id]);
 
   return (
     <>
