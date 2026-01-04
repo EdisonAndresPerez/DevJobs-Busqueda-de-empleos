@@ -1,5 +1,6 @@
 //hook useState
 import { useState } from "react";
+import Link from "../Link";
 
 export const JobCard = ({ job }) => {
   //estado para inicializarlo de boton aplicar
@@ -22,7 +23,11 @@ export const JobCard = ({ job }) => {
       data-technology={job.data?.technology}
     >
       <div className="job-listing-card__content">
-        <h3>{job.titulo}</h3>
+        <h3>
+          <Link className="links_ofertas" href={`/detaill/${job.id}`}>
+            {job.titulo}
+          </Link>
+        </h3>
         <small>
           {job.empresa} -- {job.ubicacion}
         </small>

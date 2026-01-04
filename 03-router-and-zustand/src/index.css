@@ -440,6 +440,20 @@ article {
   }
 }
 
+/* Links en tarjetas de empleo */
+.links_ofertas,
+.links_ofertas:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.links_ofertas:hover,
+.links_ofertas:focus {
+  color: var(--text-primary);
+  text-decoration: none;
+  outline: none;
+}
+
 .jobs-loading {
   display: flex;
   align-items: center;

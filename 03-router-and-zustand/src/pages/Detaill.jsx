@@ -1,37 +1,147 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import snarkdown from "snarkdown";
 
-//para saber la id de la ruta
-import { useParams } from "react-router";
+import Link from "../components/Link";
 
-const Detaill = () => {
-  const { id } = useParams();
+import "./style.css";
 
-  const [job, setJob] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch(
-      `https://jscamp-api.vercel.app/api/jobs/d35b2c89-5d60-4f26-b19a-6cfb2f1a0f57${id}`
-    )
-      .then((response) => {
-        if (!response.ok)
-          throw new Error("Error al obtener los datos del empleo");
-        return response.json();
-      })
-      .then((json) => {
-        setJob(json);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [id]);
+function JobSection ({ title, content }) {
+  const html = snarkdown(content)
 
   return (
-    <>
-      <h1>Detalle del empleo {id}</h1>
-    </>
-  );
-};
+    <section className="detail-section">
+      <h2 className="detail-sectionTitle">
+        {title}
+      </h2>
 
-export default Detaill;
+      <div
+        className="detail-sectionContent prose"
+        dangerouslySetInnerHTML={{
+          __html: html
+        }}
+      />
+
+    </section>
+  )
+}
+
+function DetailPageBreadCrumb ({ job }) {
+  return (
+    <div className="detail-container">
+      <nav className="detail-breadcrumb">
+        <Link 
+          href="/search"
+          className="detail-breadcrumbButton"
+        >
+          Empleos
+        </Link>
+        <span className="detail-breadcrumbSeparator">/</span>
+        <span className="detail-breadcrumbCurrent">{job.titulo}</span>
+      </nav>
+    </div>
+  )
+}
+
+function DetailPageHeader ({ job }) {
+  return (
+    <>
+      <header className="detail-header">
+        <h1 className="detail-title">
+          {job.titulo}
+        </h1>
+        <p className="detail-meta">
+          {job.empresa} · {job.ubicacion}
+        </p>
+      </header>
+
+      <DetailApplyButton />
+    </>
+  )
+}
+
+function DetailApplyButton () {
+  return (
+    <button className="detail-applyButton">
+      Aplicar ahora
+    </button>
+  )
+}
+
+export default function JobDetail () {
+  const { id } = useParams()
+  const navigate = useNavigate()
+
+  const [job, setJob] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const controller = new AbortController()
+
+    setLoading(true)
+    setError(null)
+
+    fetch(`https://jscamp-api.vercel.app/api/jobs/${id}`, { signal: controller.signal })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Oferta no encontrada')
+        }
+
+        return response.json()
+      })
+      .then(json => {
+        setJob(json)
+      })
+      .catch(err => {
+        if (err?.name === 'AbortError') return
+        setError(err.message)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+
+    return () => controller.abort()
+  }, [id])
+
+  if (loading) {
+    return (
+      <div className="detail-page">
+        <div className="detail-loading">
+          <p className="detail-loadingText">Cargando...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (error || !job) {
+    return (
+      <div className="detail-page">
+        <div className="detail-error">
+          <h2 className="detail-errorTitle">
+            Oferta no encontrada
+          </h2>
+          {error && <p className="detail-errorText">{error}</p>}
+          <button
+            onClick={() => navigate('/')}
+            className="detail-errorButton"
+          >
+            Volver al inicio
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="detail-page">
+      <DetailPageBreadCrumb job={job} />
+      <DetailPageHeader job={job} />
+
+      <JobSection title="Descripción del puesto" content={job.content.description} />
+      <JobSection title="Responsabilidades" content={job.content.responsibilities} />
+      <JobSection title="Requisitios" content={job.content.requirements} />
+      <JobSection title="Acerca de la empresa" content={job.content.about} />
+    </div>
+  )
+}

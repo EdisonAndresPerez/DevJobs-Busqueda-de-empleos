@@ -1,0 +1,143 @@
+.detail-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.detail-container {
+  margin-top: 1rem;
+}
+
+.detail-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.detail-breadcrumbButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.detail-breadcrumbButton:hover,
+.detail-breadcrumbButton:focus {
+  outline: none;
+  color: var(--text-primary);
+}
+
+.detail-breadcrumbSeparator {
+  opacity: 0.75;
+}
+
+.detail-breadcrumbCurrent {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.detail-header {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--card-bg);
+}
+
+.detail-title {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.detail-meta {
+  color: var(--text-muted);
+}
+
+.detail-applyButton {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.detail-favoriteButton {
+  margin-top: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.detail-favoriteButton:hover,
+.detail-favoriteButton:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.detail-section {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.detail-sectionTitle {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.detail-sectionContent {
+  color: var(--text-secondary);
+}
+
+/* Prose (markdown básico) */
+.prose ul {
+  padding-left: 1.25rem;
+  margin: 0.75rem 0;
+}
+
+.prose li {
+  margin: 0.25rem 0;
+}
+
+.prose p {
+  margin: 0.75rem 0;
+}
+
+.detail-loading,
+.detail-error {
+  margin-top: 2rem;
+  padding: 2rem 1rem;
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--card-bg);
+}
+
+.detail-loadingText {
+  color: var(--text-muted);
+}
+
+.detail-errorTitle {
+  margin-bottom: 0.75rem;
+}
+
+.detail-errorText {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.detail-errorButton {
+  width: 100%;
+}
