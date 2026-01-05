@@ -1,21 +1,16 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "./useRouter";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "react-router";
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
 const FILTER_KEYS = ["search", "technology", "location", "experience-level"];
 
-const readPageFromSearch = (search) => {
-  try {
-    const params = new URLSearchParams(search);
-    const value = Number(params.get("page"));
-    return Number.isFinite(value) && value >= 1 ? Math.floor(value) : 1;
-  } catch {
-    return 1;
-  }
+const readPageFromSearchParams = (params) => {
+  const value = Number(params?.get?.("page"));
+  return Number.isFinite(value) && value >= 1 ? Math.floor(value) : 1;
 };
 
-const readFiltersFromSearch = (search) => {
+const readFiltersFromSearchParams = (params) => {
   const next = {
     search: "",
     technology: "",
@@ -23,14 +18,9 @@ const readFiltersFromSearch = (search) => {
     "experience-level": "",
   };
 
-  try {
-    const params = new URLSearchParams(search);
-    for (const key of FILTER_KEYS) {
-      const value = params.get(key);
-      if (value != null) next[key] = value;
-    }
-  } catch {
-    // noop
+  for (const key of FILTER_KEYS) {
+    const value = params?.get?.(key);
+    if (value != null) next[key] = value;
   }
 
   return next;
@@ -43,16 +33,14 @@ const areFiltersEqual = (a, b) => {
   return true;
 };
 
-const isUrlInSync = (page, filters) => {
-  const params = new URLSearchParams(window.location.search);
-
+const areSearchParamsInSync = (params, page, filters) => {
   const expectedPage = String(Number(page) || 1);
-  const actualPage = params.get("page") ?? "1";
+  const actualPage = params?.get?.("page") ?? "1";
   if (expectedPage !== actualPage) return false;
 
   for (const key of FILTER_KEYS) {
     const expected = String(filters?.[key] ?? "").trim();
-    const actual = params.get(key) ?? "";
+    const actual = params?.get?.(key) ?? "";
     if (expected !== actual) return false;
   }
 
@@ -60,7 +48,10 @@ const isUrlInSync = (page, filters) => {
 };
 
 export function useJobSearch() {
-  const { currentSearch, navigate } = useRouter();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchString = useMemo(() => searchParams.toString(), [searchParams]);
+  const skipNextUrlSyncRef = useRef(true);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({
     search: "",
@@ -70,28 +61,41 @@ export function useJobSearch() {
   });
 
   useEffect(() => {
-    const urlPage = readPageFromSearch(currentSearch);
-    const urlFilters = readFiltersFromSearch(currentSearch);
+    const urlPage = readPageFromSearchParams(searchParams);
+    const urlFilters = readFiltersFromSearchParams(searchParams);
+
+    // Evita que el efecto de escritura sobrescriba la URL
+    // antes de que el estado se hidrate desde los query params.
+    skipNextUrlSyncRef.current = true;
 
     setCurrentPage((prev) => (prev === urlPage ? prev : urlPage));
     setFilters((prev) => (areFiltersEqual(prev, urlFilters) ? prev : urlFilters));
-  }, [currentSearch]);
+  }, [searchString, searchParams]);
 
   useEffect(() => {
-    if (isUrlInSync(currentPage, filters)) return;
-
-    const url = new URL(window.location.href);
-    url.searchParams.set("page", String(currentPage));
-
-    for (const key of FILTER_KEYS) {
-      const value = String(filters?.[key] ?? "").trim();
-      if (value) url.searchParams.set(key, value);
-      else url.searchParams.delete(key);
+    if (skipNextUrlSyncRef.current) {
+      skipNextUrlSyncRef.current = false;
+      return;
     }
 
-    const next = `${url.pathname}?${url.searchParams.toString()}`;
-    navigate(next);
-  }, [currentPage, filters, navigate]);
+    if (areSearchParamsInSync(searchParams, currentPage, filters)) return;
+
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.set("page", String(Number(currentPage) || 1));
+
+        for (const key of FILTER_KEYS) {
+          const value = String(filters?.[key] ?? "").trim();
+          if (value) next.set(key, value);
+          else next.delete(key);
+        }
+
+        return next;
+      },
+      { replace: true }
+    );
+  }, [currentPage, filters, searchParams, setSearchParams]);
 
   const handlePageChange = (page, totalPages = 1) => {
     setCurrentPage(clamp(page, 1, totalPages));

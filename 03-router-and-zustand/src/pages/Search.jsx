@@ -2,7 +2,7 @@ import { Form } from "../components/formulario";
 
 import { useEffect } from "react";
 
-import { useSearchParams } from "react-router";
+
 
 import { Navegation } from "../components/navegation/Navegation";
 import { JobListings } from "../components/jobListings/JobListings";
@@ -16,7 +16,6 @@ const Search = () => {
   const { handlePageChange, handleFilterChange, filters, currentPage } =
     useJobSearch();
 
-  const [searchParams, setSearchParams] = useSearchParams();
 
 
   const { jobs, loading, error, totalPages } = useJobsApi(
