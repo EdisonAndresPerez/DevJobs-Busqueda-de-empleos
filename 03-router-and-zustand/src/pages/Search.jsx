@@ -2,6 +2,8 @@ import { Form } from "../components/formulario";
 
 import { useEffect } from "react";
 
+import { useSearchParams } from "react-router";
+
 import { Navegation } from "../components/navegation/Navegation";
 import { JobListings } from "../components/jobListings/JobListings";
 import { useJobSearch } from "../hooks/useJobSearch";
@@ -13,6 +15,9 @@ const MIN_LOADING_MS = 900;
 const Search = () => {
   const { handlePageChange, handleFilterChange, filters, currentPage } =
     useJobSearch();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
 
   const { jobs, loading, error, totalPages } = useJobsApi(
     filters,
