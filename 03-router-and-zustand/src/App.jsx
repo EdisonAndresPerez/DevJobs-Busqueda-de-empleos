@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 
-
 import { Header } from "./components/header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { Routes, Route } from "react-router";
@@ -12,30 +11,31 @@ import Search from "./pages/Search";
 import Login from "./pages/Login";
 import Detaill from "./pages/Detaill";
 
-
 const HomePage = lazy(() => import("./pages/Home"));
-const SearchPage = lazy(() => import ("./pages/Search"));
-const LoginPage = lazy(() => import ("./pages/Login"));
+const SearchPage = lazy(() => import("./pages/Search"));
+const LoginPage = lazy(() => import("./pages/Login"));
 
-
-function App() {
+export default function App() {
   return (
     <>
       <Header />
-      {/* Routes => contenedor que contiene todas las rutas */}
-      <Routes>
-        {/*  Route => Definir cada ruta individual */}
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/login" element={<Login />} />
 
-        <Route path="/detaill/:id" element={<Detaill />} />
+      <Suspense fallback={<div>Loading...</div>}>
+        {/* Routes => contenedor que contiene todas las rutas */}
+        <Routes>
+          {/*  Route => Definir cada ruta individual */}
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/login" element={<Login />} />
 
-        {/*  Ruta de error  */}
-        <Route path="*" element={<Error />} />
-      </Routes>
+          <Route path="/detaill/:id" element={<Detaill />} />
+
+          {/*  Ruta de error  */}
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </Suspense>
+
       <Footer />
     </>
   );
 }
-export default App;
