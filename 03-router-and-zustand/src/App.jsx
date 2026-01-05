@@ -17,7 +17,18 @@ export default function App() {
     <>
       <Header />
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <main>
+            <section>
+              <div className="jobs-loading" role="status" aria-live="polite">
+                <span className="jobs-loading__spinner" aria-hidden="true" />
+                <p className="jobs-loading__text">Cargando…</p>
+              </div>
+            </section>
+          </main>
+        }
+      >
         {/* Routes => contenedor que contiene todas las rutas */}
         <Routes>
           {/*  Route => Definir cada ruta individual */}
