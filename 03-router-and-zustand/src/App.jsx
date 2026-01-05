@@ -6,14 +6,11 @@ import { Routes, Route } from "react-router";
 
 import Error from "./components/Error";
 
-import Home from "./pages/Home";
-import Search from "./pages/Search";
-import Login from "./pages/Login";
-import Detaill from "./pages/Detaill";
 
 const HomePage = lazy(() => import("./pages/Home"));
 const SearchPage = lazy(() => import("./pages/Search"));
 const LoginPage = lazy(() => import("./pages/Login"));
+const DetaillPage = lazy(() => import("./pages/Detaill"));
 
 export default function App() {
   return (
@@ -24,11 +21,11 @@ export default function App() {
         {/* Routes => contenedor que contiene todas las rutas */}
         <Routes>
           {/*  Route => Definir cada ruta individual */}
-          <Route path="/" element={<Home />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/login" element={<LoginPage />} />
 
-          <Route path="/detaill/:id" element={<Detaill />} />
+          <Route path="/detaill/:id" element={<DetaillPage />} />
 
           {/*  Ruta de error  */}
           <Route path="*" element={<Error />} />
