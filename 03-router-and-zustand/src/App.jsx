@@ -12,6 +12,12 @@ import Search from "./pages/Search";
 import Login from "./pages/Login";
 import Detaill from "./pages/Detaill";
 
+
+const HomePage = lazy(() => import("./pages/Home"));
+const SearchPage = lazy(() => import ("./pages/Search"));
+const LoginPage = lazy(() => import ("./pages/Login"));
+
+
 function App() {
   return (
     <>
