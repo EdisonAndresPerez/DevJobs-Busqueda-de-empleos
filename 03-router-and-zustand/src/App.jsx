@@ -4,6 +4,8 @@ import { Header } from "./components/header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { Routes, Route } from "react-router";
 
+import { useState } from "react";
+
 import Error from "./components/Error";
 
 
@@ -13,6 +15,21 @@ const LoginPage = lazy(() => import("./pages/Login"));
 const DetaillPage = lazy(() => import("./pages/Detaill"));
 
 export default function App() {
+
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  }
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  }
+
+
+
+
   return (
     <>
       <Header />

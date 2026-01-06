@@ -1,3 +1,4 @@
+import { NavLink } from "react-router";
 import Link from "../Link";
 
 export const Header = () => {
@@ -22,8 +23,8 @@ export const Header = () => {
       </h1>
 
       <nav>
-        <Link href="/search">Empleos</Link>
-         <Link href="/login">Iniciar Sesión</Link>
+        <NavLink to="/search">Empleos</NavLink>
+         <NavLink to="/login">Iniciar Sesión</NavLink>
       </nav>
     </header>
   );
