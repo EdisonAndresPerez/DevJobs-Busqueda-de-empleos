@@ -126,6 +126,14 @@ nav {
   }
 }
 
+nav .nav__link--active {
+  color: var(--text-secondary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-light);
+  text-underline-offset: 0.3rem;
+}
+
 /* Botones del Header */
 header div a {
   padding: 0.5rem 1rem;

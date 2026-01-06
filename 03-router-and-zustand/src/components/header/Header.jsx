@@ -23,8 +23,22 @@ export const Header = () => {
       </h1>
 
       <nav>
-        <NavLink to="/search">Empleos</NavLink>
-         <NavLink to="/login">Iniciar Sesión</NavLink>
+        <NavLink
+          to="/search"
+          className={({ isActive }) =>
+            isActive ? "nav__link nav__link--active" : "nav__link"
+          }
+        >
+          Empleos
+        </NavLink>
+        <NavLink
+          to="/login"
+          className={({ isActive }) =>
+            isActive ? "nav__link nav__link--active" : "nav__link"
+          }
+        >
+          Iniciar Sesión
+        </NavLink>
       </nav>
     </header>
   );

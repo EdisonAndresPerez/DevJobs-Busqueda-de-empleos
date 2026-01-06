@@ -8,31 +8,29 @@ import { useState } from "react";
 
 import Error from "./components/Error";
 
-
 const HomePage = lazy(() => import("./pages/Home"));
 const SearchPage = lazy(() => import("./pages/Search"));
 const LoginPage = lazy(() => import("./pages/Login"));
 const DetaillPage = lazy(() => import("./pages/Detaill"));
 
 export default function App() {
-
-const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
-  }
+  };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-  }
-
-
-
+  };
 
   return (
     <>
-      <Header />
+      <Header
+        isLoggedIn={isLoggedIn}
+        onLogin={handleLogin}
+        onLogout={handleLogout}
+      />
 
       <Suspense
         fallback={
@@ -53,7 +51,10 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
           <Route path="/search" element={<SearchPage />} />
           <Route path="/login" element={<LoginPage />} />
 
-          <Route path="/detaill/:id" element={<DetaillPage />} />
+          <Route
+            path="/detaill/:id"
+            element={<DetaillPage isLoggedIn={isLoggedIn} />}
+          />
 
           {/*  Ruta de error  */}
           <Route path="*" element={<Error />} />
