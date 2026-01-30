@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import snarkdown from "snarkdown";
+
+import { AuthContext } from "../context/AuthContext.jsx";
 
 import Link from "../components/Link";
 
@@ -37,7 +39,7 @@ function DetailPageBreadCrumb({ job }) {
   );
 }
 
-function DetailPageHeader({ job, isLoggedIn }) {
+function DetailPageHeader({ job }) {
   return (
     <>
       <header className="detail-header">
@@ -47,12 +49,14 @@ function DetailPageHeader({ job, isLoggedIn }) {
         </p>
       </header>
 
-      <DetailApplyButton isLoggedIn={isLoggedIn} />
+      <DetailApplyButton />
     </>
   );
 }
 
-function DetailApplyButton({ isLoggedIn }) {
+function DetailApplyButton() {
+  const { isLoggedIn } = useContext(AuthContext);
+
   return (
     <button disabled={!isLoggedIn} className="detail-applyButton">
       {!isLoggedIn ? "Inicia sesión para aplicar" : "Aplicar ahora"}
@@ -60,7 +64,8 @@ function DetailApplyButton({ isLoggedIn }) {
   );
 }
 
-export default function JobDetail({ isLoggedIn = false }) {
+export default function JobDetail() {
+  const { isLoggedIn } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -125,7 +130,7 @@ export default function JobDetail({ isLoggedIn = false }) {
   return (
     <div className="detail-page">
       <DetailPageBreadCrumb job={job} />
-      <DetailPageHeader job={job} isLoggedIn={isLoggedIn} />
+      <DetailPageHeader job={job} />
 
       <JobSection
         title="Descripción del puesto"

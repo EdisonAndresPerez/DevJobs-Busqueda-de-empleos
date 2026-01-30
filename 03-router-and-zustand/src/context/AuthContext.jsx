@@ -19,5 +19,5 @@ export function AuthProvider({ children }) {
     logout,
   };
 
-  return <AuthContext value={value}>{children}</AuthContext>;
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
