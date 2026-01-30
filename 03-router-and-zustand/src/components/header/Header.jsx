@@ -1,12 +1,12 @@
 import { NavLink } from "react-router";
 import Link from "../Link";
-import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext.jsx";
+import { useAuthStore } from "../../store/authStore.js";
 
 
 export const Header = () => {
 
-  const { isLoggedIn, login, logout } = useContext(AuthContext);
+  const { isLoggedIn, login, logout } = useAuthStore()
 
 
   return (
