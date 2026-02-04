@@ -1,6 +1,5 @@
 import { NavLink } from "react-router";
 import Link from "../Link";
-import { AuthContext } from "../../context/AuthContext.jsx";
 import { useAuthStore } from "../../store/authStore.js";
 
 
@@ -56,6 +55,19 @@ export const Header = () => {
             simulador login
           </button>
         )}
+
+        {isLoggedIn && (
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              isActive ? "nav__link nav__link--active" : "nav__link"
+            }
+          >
+            Perfil
+          </NavLink>
+        )}
+
+
       </nav>
     </header>
   );

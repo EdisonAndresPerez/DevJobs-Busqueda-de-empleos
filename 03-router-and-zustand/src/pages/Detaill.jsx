@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import snarkdown from "snarkdown";
 
-import { AuthContext } from "../context/AuthContext.jsx";
+
 
 import Link from "../components/Link";
 
 import "./style.css";
+import { useAuthStore } from "../store/authStore.js";
 
 function JobSection({ title, content }) {
   const html = snarkdown(content);
@@ -55,7 +56,7 @@ function DetailPageHeader({ job }) {
 }
 
 function DetailApplyButton() {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn } =useAuthStore()
 
   return (
     <button disabled={!isLoggedIn} className="detail-applyButton">
@@ -65,7 +66,6 @@ function DetailApplyButton() {
 }
 
 export default function JobDetail() {
-  const { isLoggedIn } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
 
