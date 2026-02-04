@@ -4,7 +4,7 @@ import Link from "../Link";
 import { useFavoriteStore } from "../../store/favoriteStore";
 import { useAuthStore } from "../../store/authStore";
 
-export const JobCard = ({ job, showOnlyFavorite = false }) => {
+export const JobCard = ({ job}) => {
   //estado para el boton aplicar
   const [isApplied, setIsApplied] = useState(false);
   

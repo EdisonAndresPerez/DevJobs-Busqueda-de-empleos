@@ -1,12 +1,11 @@
 import { lazy, Suspense } from "react";
 
-
-
 import { Header } from "./components/header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { Routes, Route } from "react-router";
 
 import Error from "./components/Error";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 const HomePage = lazy(() => import("./pages/Home"));
 const SearchPage = lazy(() => import("./pages/Search"));
@@ -38,7 +37,15 @@ export default function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/login" element={<LoginPage />} />
 
-          <Route path="/perfil" element={<PerfilPage />} />
+          {/* Ruta protegida */}
+          <Route
+            path="/perfil"
+            element={
+              <ProtectedRoute redirectTo="/login">
+                <PerfilPage />
+              </ProtectedRoute>
+            }
+          />
 
           <Route path="/detaill/:id" element={<DetaillPage />} />
 
