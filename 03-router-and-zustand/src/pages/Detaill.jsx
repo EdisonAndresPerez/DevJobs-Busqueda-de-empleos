@@ -8,6 +8,7 @@ import Link from "../components/Link";
 
 import "./style.css";
 import { useAuthStore } from "../store/authStore.js";
+import { useFavoriteStore } from "../store/favoriteStore.js";
 
 function JobSection({ title, content }) {
   const html = snarkdown(content);
@@ -64,6 +65,14 @@ function DetailApplyButton() {
     </button>
   );
 }
+
+
+function DetailApplyButtonFavorite() {
+  const {toggleFavorite, isFavorite} = useFavoriteStore()
+}
+
+
+
 
 export default function JobDetail() {
   const { id } = useParams();

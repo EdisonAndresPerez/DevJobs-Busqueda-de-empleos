@@ -403,6 +403,7 @@ article {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 1rem;
 
+
   .job-listing-card {
     background: none;
     box-shadow: none;
@@ -530,6 +531,11 @@ article {
   &.is-applied {
     background: #4caf50;
     pointer-events: none;
+  }
+
+  &.is-favorite {
+    background: #ff6b6b;
+    color: white;
   }
 }
 

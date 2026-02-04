@@ -12,6 +12,7 @@ const HomePage = lazy(() => import("./pages/Home"));
 const SearchPage = lazy(() => import("./pages/Search"));
 const LoginPage = lazy(() => import("./pages/Login"));
 const DetaillPage = lazy(() => import("./pages/Detaill"));
+const PerfilPage = lazy(() => import("./pages/Perfil"));
 
 export default function App() {
   return (
@@ -36,6 +37,8 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/login" element={<LoginPage />} />
+
+          <Route path="/perfil" element={<PerfilPage />} />
 
           <Route path="/detaill/:id" element={<DetaillPage />} />
 

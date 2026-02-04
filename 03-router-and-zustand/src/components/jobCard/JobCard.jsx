@@ -1,19 +1,37 @@
 //hook useState
 import { useState } from "react";
 import Link from "../Link";
+import { useFavoriteStore } from "../../store/favoriteStore";
 
-export const JobCard = ({ job }) => {
-  //estado para inicializarlo de boton aplicar
+export const JobCard = ({ job, showOnlyFavorite = false }) => {
+  //estado para el boton aplicar
   const [isApplied, setIsApplied] = useState(false);
+  
+  //zustand store para favoritos
+  const { toggleFavorite, isFavorite } = useFavoriteStore();
+  
+  //verificamos si este job es favorito
+  const isFav = isFavorite(job.id);
 
   const handleApplyClick = () => {
-    setIsApplied(true);
+    setIsApplied(!isApplied);
   };
 
-  const buttonClasses = isApplied
+  const handleFavoriteClick = () => {
+    toggleFavorite(job.id);
+  };
+
+  const buttonApplyClasses = isApplied
     ? "button-apply-job is-applied"
     : "button-apply-job";
-  const buttonText = isApplied ? "Aplicado" : "Aplicar";
+  const buttonApplyText = isApplied ? "Aplicado" : "Aplicar";
+  
+  const buttonFavoriteClasses = isFav
+    ? "button-apply-job is-favorite"
+    : "button-apply-job";
+  const buttonFavoriteText = isFav
+    ? "Eliminar Favorito"
+    : "Agregar a Favoritos";
 
   return (
     <article
@@ -33,8 +51,13 @@ export const JobCard = ({ job }) => {
         </small>
         <p>{job.descripcion}</p>
       </div>
-      <button onClick={handleApplyClick} className={buttonClasses}>
-        {buttonText}
+      {!showOnlyFavorite && (
+        <button onClick={handleApplyClick} className={buttonApplyClasses}>
+          {buttonApplyText}
+        </button>
+      )}
+      <button onClick={handleFavoriteClick} className={buttonFavoriteClasses}>
+        {buttonFavoriteText}
       </button>
     </article>
   );

@@ -58,7 +58,7 @@ export const Header = () => {
 
         {isLoggedIn && (
           <NavLink
-            to="/profile"
+            to="/perfil"
             className={({ isActive }) =>
               isActive ? "nav__link nav__link--active" : "nav__link"
             }
