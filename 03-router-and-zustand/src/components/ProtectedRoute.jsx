@@ -2,11 +2,11 @@ import { Navigate } from "react-router"
 import { useAuthStore } from "../store/authStore"
 
 
-export const ProtectedRoute = ({ children }) => {
+export const ProtectedRoute = ({ children, redirectTo }) => {
   const { isLoggedIn } = useAuthStore();
 
   if (!isLoggedIn) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={redirectTo} replace />;
   }
 
   return children;
