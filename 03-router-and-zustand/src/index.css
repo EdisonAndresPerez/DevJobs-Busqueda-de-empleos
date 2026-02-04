@@ -537,6 +537,13 @@ article {
     background: #ff6b6b;
     color: white;
   }
+
+  &:disabled {
+    background: #666;
+    color: #999;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 }
 
 

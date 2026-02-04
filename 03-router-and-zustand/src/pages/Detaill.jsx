@@ -52,6 +52,7 @@ function DetailPageHeader({ job }) {
       </header>
 
       <DetailApplyButton />
+      <DetailApplyButtonFavorite job={job} />
     </>
   );
 }
@@ -67,8 +68,25 @@ function DetailApplyButton() {
 }
 
 
-function DetailApplyButtonFavorite() {
-  const {toggleFavorite, isFavorite} = useFavoriteStore()
+function DetailApplyButtonFavorite({ job }) {
+  const { toggleFavorite, isFavorite } = useFavoriteStore();
+  
+  // Verificamos si este job está en favoritos
+  const isFav = isFavorite(job.id);
+
+  const handleFavoriteClick = () => {
+    toggleFavorite(job.id);
+  };
+
+  const buttonClasses = isFav
+    ? "detail-applyButton is-favorite"
+    : "detail-applyButton";
+
+  return (
+    <button onClick={handleFavoriteClick} className={buttonClasses}>
+      {isFav ? "Quitar de favoritos" : "Agregar a favoritos"}
+    </button>
+  );
 }
 
 

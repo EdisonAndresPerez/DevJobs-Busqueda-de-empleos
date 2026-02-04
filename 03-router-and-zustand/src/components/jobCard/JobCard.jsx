@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "../Link";
 import { useFavoriteStore } from "../../store/favoriteStore";
+import { useAuthStore } from "../../store/authStore";
 
 export const JobCard = ({ job, showOnlyFavorite = false }) => {
   //estado para el boton aplicar
@@ -9,6 +10,7 @@ export const JobCard = ({ job, showOnlyFavorite = false }) => {
   
   //zustand store para favoritos
   const { toggleFavorite, isFavorite } = useFavoriteStore();
+  const {isLoggedIn} = useAuthStore()
   
   //verificamos si este job es favorito
   const isFav = isFavorite(job.id);
@@ -51,12 +53,18 @@ export const JobCard = ({ job, showOnlyFavorite = false }) => {
         </small>
         <p>{job.descripcion}</p>
       </div>
-      {!showOnlyFavorite && (
-        <button onClick={handleApplyClick} className={buttonApplyClasses}>
+        <button onClick={handleApplyClick}
+         className={buttonApplyClasses}
+         disabled={!isLoggedIn}
+        >
           {buttonApplyText}
         </button>
-      )}
-      <button onClick={handleFavoriteClick} className={buttonFavoriteClasses}>
+      
+      <button 
+        onClick={handleFavoriteClick} 
+        disabled={!isLoggedIn}
+        className={buttonFavoriteClasses}
+      >
         {buttonFavoriteText}
       </button>
     </article>

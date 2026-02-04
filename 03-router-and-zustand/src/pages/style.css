@@ -65,6 +65,17 @@
   width: 100%;
 }
 
+.detail-applyButton.is-favorite {
+  background: #ff6b6b;
+  color: white;
+  border-color: #ff6b6b;
+}
+
+.detail-applyButton.is-favorite:hover {
+  background: #ee5a5a;
+  border-color: #ee5a5a;
+}
+
 .detail-favoriteButton {
   margin-top: 0.75rem;
   width: 100%;
