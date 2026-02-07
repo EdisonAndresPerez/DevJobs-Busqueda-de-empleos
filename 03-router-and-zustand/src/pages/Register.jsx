@@ -1,26 +1,15 @@
-import { NavLink, useNavigate } from "react-router";
-import { useAuthStore } from "../store/authStore";
+import { NavLink } from "react-router";
 
-const Login = () => {
-  const {  login } = useAuthStore();
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aquí harías la validación real con la API
-    login(); // Actualiza el estado global
-    navigate("/search"); // Redirige a empleos
-  };
-
+const Register = () => {
   return (
     <>
       <main className="login">
         <header className="login__header">
-          <h1>Bienvenido</h1>
-          <h3>Inicia sesión para encontrar una gran oportunidad laboral</h3>
+          <h1>Crea una cuenta</h1>
+          <h3>Regístrate para encontrar una gran oportunidad laboral</h3>
         </header>
         <section className="login__container">
-          <form onSubmit={handleSubmit}  className="login__form" action="" method="post">
+          <form className="login__form" action="" method="post">
             <div className="login__field">
               <input
                 className="login__input"
@@ -56,20 +45,15 @@ const Login = () => {
               </a>
             </div>
 
+
             <button>Iniciar sesión</button>
 
-            <p className="login__no-account">¿No tienes cuenta?</p>
+            <p className="login__no-account">¿Ya tienes cuenta?</p>
             <div className="login__actions">
-              <NavLink
-                to="/register"
-                className="login__secondary"
-                type="button"
-              >
-                Crear cuenta para Desarrollador
+              <NavLink to="/login" className="login__secondary" type="button">
+                Inicia sesion
               </NavLink>
-              <button className="login__secondary" type="button">
-                Crear cuenta para Empresa
-              </button>
+
             </div>
           </form>
         </section>
@@ -78,4 +62,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

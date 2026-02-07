@@ -1,12 +1,13 @@
 import { NavLink } from "react-router";
 import Link from "../Link";
 import { useAuthStore } from "../../store/authStore.js";
+import { useFavoriteStore } from "../../store/favoriteStore.js";
 
 
 export const Header = () => {
 
-  const { isLoggedIn, login, logout } = useAuthStore()
-
+  const { isLoggedIn, login, logout,  } = useAuthStore()
+  const { clearFavorites} = useFavoriteStore()
 
   return (
     <header>

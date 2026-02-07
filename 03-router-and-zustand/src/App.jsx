@@ -10,6 +10,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 const HomePage = lazy(() => import("./pages/Home"));
 const SearchPage = lazy(() => import("./pages/Search"));
 const LoginPage = lazy(() => import("./pages/Login"));
+const RegisterPage = lazy(() => import("./pages/Register"));
 const DetaillPage = lazy(() => import("./pages/Detaill"));
 const PerfilPage = lazy(() => import("./pages/Perfil"));
 
@@ -36,7 +37,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/login" element={<LoginPage />} />
-
+          <Route path="/register" element={<RegisterPage />} />
           {/* Ruta protegida */}
           <Route
             path="/perfil"

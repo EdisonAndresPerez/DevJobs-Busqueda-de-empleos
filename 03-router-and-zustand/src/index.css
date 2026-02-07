@@ -699,6 +699,10 @@ article {
   font-size: 0.9rem;
   white-space: normal;
   line-height: 1.2;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  border-radius: 10px;
 }
 
 .login__secondary:hover,
