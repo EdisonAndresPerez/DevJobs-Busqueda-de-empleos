@@ -1,13 +1,9 @@
 import { NavLink } from "react-router";
 import Link from "../Link";
 import { useAuthStore } from "../../store/authStore.js";
-import { useFavoriteStore } from "../../store/favoriteStore.js";
-
 
 export const Header = () => {
-
-  const { isLoggedIn, login, logout,  } = useAuthStore()
-  const { clearFavorites} = useFavoriteStore()
+  const { isLoggedIn, login, logout } = useAuthStore();
 
   return (
     <header>
@@ -38,14 +34,17 @@ export const Header = () => {
         >
           Empleos
         </NavLink>
-        <NavLink
-          to="/login"
-          className={({ isActive }) =>
-            isActive ? "nav__link nav__link--active" : "nav__link"
-          }
-        >
-          Iniciar Sesión
-        </NavLink>
+
+        {!isLoggedIn && (
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive ? "nav__link nav__link--active" : "nav__link"
+            }
+          >
+            Iniciar Sesión
+          </NavLink>
+        )}
 
         {isLoggedIn ? (
           <button type="button" onClick={logout}>
@@ -67,8 +66,6 @@ export const Header = () => {
             Perfil
           </NavLink>
         )}
-
-
       </nav>
     </header>
   );
