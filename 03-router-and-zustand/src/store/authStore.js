@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { useFavoriteStore } from './favoriteStore';
 
 export const useAuthStore = create(
   persist(
@@ -9,8 +10,11 @@ export const useAuthStore = create(
       
       //acciones
       login: () => set({ isLoggedIn: true }),
-      logout: () => set({ isLoggedIn: false }),
-      clearFavorites: () => set({ favorite: [] }),
+      logout: () => {
+        // Limpiamos los favoritos al cerrar sesión
+        useFavoriteStore.getState().clearFavorites();
+        set({ isLoggedIn: false });
+      },
     }),
     {
       name: 'auth-storage', // nombre de la clave en localStorage
