@@ -1,0 +1,5 @@
+Este es el contenido de archivoLeer.txt
+
+
+Hola este es un cotenido txt para leerlo con readFile de node:fs/promises 
+es para leer ficheros de node. 
