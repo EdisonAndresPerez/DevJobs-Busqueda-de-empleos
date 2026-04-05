@@ -2,7 +2,12 @@
 import { createServer } from "node:http";
 
 // Definimos el puerto donde correrá el servidor
-const PORT = 3000;
+//const PORT = 3000;
+
+
+//la forma comun de usar es llamando la variable de entorno
+process.loadEnvFile() // Carga las variables de entorno desde el archivo .env
+const PORT = process.env.PORT || 3000;
 
 /**
  * Creamos el servidor HTTP
