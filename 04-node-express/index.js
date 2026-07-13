@@ -16,8 +16,8 @@ app.get("/health", (req, res) => {
 
 //GET para obtener todos los trabajos
 app.get("/get-jobs", async (req, res) => {
+  //importamos y creamos la variable jobs con el contenido del archivo jobs.json
   const jobs = await import("./jobs.json", { with: { type: "json" } });
-
   return res.json(jobs);
 });
 
