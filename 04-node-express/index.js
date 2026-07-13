@@ -44,6 +44,8 @@ app.get("/get-jobs", (req, res) => {
   });
 });
 
+
+
 // GET con parametros para obtener un solo trabajo por id
 app.get("/get-single-job/:id", (req, res) => {
   const { id } = req.params;
@@ -61,6 +63,30 @@ app.get("/get-single-job/:id", (req, res) => {
     },
   });
 });
+
+
+//Crear ruta opcional
+app.get("/a{b}cd", (req, res) => {
+  return res.send("Ruta con parametro opcional");
+})
+
+
+app.get("/ab*cd", (req, res) => {
+  return res.send("Ruta con comodin");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

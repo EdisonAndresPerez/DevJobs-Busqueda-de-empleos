@@ -190,5 +190,125 @@
       "modalidad": "remoto",
       "nivel": "junior"
     }
+  },
+  {
+    "id": "b2f84a3d-8e12-4c54-b91b-6d43e5a2c7f1",
+    "titulo": "Ingeniero de Datos (Data Engineer)",
+    "empresa": "Big Data Analytics Ltd.",
+    "ubicacion": "Remoto",
+    "descripcion": "Buscamos un Ingeniero de Datos senior para diseñar y mantener pipelines de datos optimizados. Experiencia sólida en Apache Spark, Kafka y arquitecturas en la nube (AWS/GCP).",
+    "data": {
+      "technology": "python",
+      "modalidad": "remoto",
+      "nivel": "senior"
+    }
+  },
+  {
+    "id": "c71d9a23-45f8-4e12-b8d2-1c29b40e7f8a",
+    "titulo": "Desarrollador Fullstack Java/Angular",
+    "empresa": "Global Finance Systems",
+    "ubicacion": "Bogotá",
+    "descripcion": "Estamos en la búsqueda de un desarrollador fullstack con experiencia en Java (Spring Boot) y Angular para integrarse a nuestro equipo de desarrollo backend y frontend.",
+    "data": {
+      "technology": "java",
+      "modalidad": "bogota",
+      "nivel": "mid-level"
+    }
+  },
+  {
+    "id": "e42b8c19-91a0-4c3d-82b5-14e0ac5f2349",
+    "titulo": "Especialista en Cloud (AWS/Azure)",
+    "empresa": "Skyline Cloud Solutions",
+    "ubicacion": "Ciudad de México",
+    "descripcion": "Buscamos un especialista que lidere la migración de infraestructuras locales hacia entornos híbridos y multi-cloud. Certificaciones en AWS o Azure son altamente valoradas.",
+    "data": {
+      "technology": "mobile",
+      "modalidad": "cdmx",
+      "nivel": "senior"
+    }
+  },
+  {
+    "id": "f81e3d22-14b0-4f8a-92d1-3a52e2a7cf5d",
+    "titulo": "Desarrollador Backend Go (Golang)",
+    "empresa": "StreamTech Media",
+    "ubicacion": "Remoto",
+    "descripcion": "Buscamos un programador backend enfocado en la alta disponibilidad y microservicios escalables utilizando Go. Conocimiento de contenedores (Docker/Kubernetes) es indispensable.",
+    "data": {
+      "technology": "node",
+      "modalidad": "remoto",
+      "nivel": "mid-level"
+    }
+  },
+  {
+    "id": "a1b52c63-78d1-4f9e-a8c2-9d52c5a8a1d2",
+    "titulo": "Diseñador de Producto (Product Designer)",
+    "empresa": "Innova Studio",
+    "ubicacion": "Barcelona",
+    "descripcion": "Buscamos un diseñador que maneje todo el ciclo de vida del diseño, desde la investigación con usuarios hasta prototipos de alta fidelidad. Experiencia con Figma y sistemas de diseño.",
+    "data": {
+      "technology": "mobile",
+      "modalidad": "barcelona",
+      "nivel": "mid-level"
+    }
+  },
+  {
+    "id": "d93c1f45-62cb-47cf-8f1d-8a0a7b539b8c",
+    "titulo": "Consultor SAP Business One",
+    "empresa": "Enterprise Resource Planning SA",
+    "ubicacion": "Santiago de Chile",
+    "descripcion": "Se solicita consultor funcional para implementaciones y soporte de SAP B1. Se requiere experiencia previa interactuando con clientes y levantamiento de requerimientos.",
+    "data": {
+      "technology": "mobile",
+      "modalidad": "santiago",
+      "nivel": "mid-level"
+    }
+  },
+  {
+    "id": "7f4c3b1a-d981-424b-9c5e-85b2e9d1a3c5",
+    "titulo": "Desarrollador iOS (Swift) Junior",
+    "empresa": "AppFactory SRL",
+    "ubicacion": "Buenos Aires",
+    "descripcion": "Buscamos desarrollador junior con muchas ganas de aprender para sumarse al equipo de aplicaciones nativas iOS. Conocimientos básicos de Swift y consumo de APIs REST.",
+    "data": {
+      "technology": "mobile",
+      "modalidad": "bsas",
+      "nivel": "junior"
+    }
+  },
+  {
+    "id": "fe5b2a34-192c-4f7d-8e62-cb29b40e14a2",
+    "titulo": "Ingeniero de Ciberseguridad (SOC Analyst)",
+    "empresa": "CyberShield Ltd.",
+    "ubicacion": "Madrid",
+    "descripcion": "Buscamos un analista para nuestro centro de operaciones de seguridad (SOC). Monitoreo de alertas, análisis de malware y gestión de incidentes en tiempo real.",
+    "data": {
+      "technology": "mobile",
+      "modalidad": "madrid",
+      "nivel": "mid-level"
+    }
+  },
+  {
+    "id": "b3e93c8a-7b41-4d09-9a52-26a0f418d777",
+    "titulo": "Desarrollador Frontend Vue.js",
+    "empresa": "Pixel Perfect Software",
+    "ubicacion": "Valencia",
+    "descripcion": "Buscamos un desarrollador frontend especializado en Vue.js (Vue 3 / Nuxt) enfocado en crear interfaces limpias, modulares y con excelente performance.",
+    "data": {
+      "technology": "react",
+      "modalidad": "valencia",
+      "nivel": "mid-level"
+    }
+  },
+  {
+    "id": "test-999",
+    "titulo": "Python Developer Intern Remoto",
+    "empresa": "Future Talents Inc.",
+    "ubicacion": "Remoto",
+    "descripcion": "Prueba de pasantía / junior para filtrado de datos: python, remoto, junior enfocado en scripts automatizados de testing y recolección de información.",
+    "data": {
+      "technology": "python",
+      "modalidad": "remoto",
+      "nivel": "junior"
+    }
   }
 ]
