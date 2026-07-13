@@ -17,17 +17,22 @@ app.get("/health", (req, res) => {
 
 //GET para obtener todos los trabajos
 app.get("/get-jobs", async (req, res) => {
-  const { limit, tecnology, text, title, level, offset } = req.query;
-  console.log("limit", limit);
+  const { limit = 10, technology, text, title, level, offset = 0 } = req.query;
 
+  console.log(text, technology);
   let filteredJobs = jobs;
-
   if (text) {
     const searchText = text.toLowerCase();
     filteredJobs = filteredJobs.filter(
       (job) =>
         job.titulo.toLocaleLowerCase().includes(searchText) ||
         job.descripcion.toLowerCase().includes(searchText),
+    );
+  }
+
+  if (technology) {
+    filteredJobs = filteredJobs.filter((job) =>
+      job.data.technology.includes(technology.toLowerCase()),
     );
   }
 
