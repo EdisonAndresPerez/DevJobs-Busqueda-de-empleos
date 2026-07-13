@@ -14,48 +14,21 @@ app.get("/health", (req, res) => {
   });
 });
 
-
 //GET para obtener todos los trabajos
-app.get("/get-jobs", (req, res) => {
-  return res.json({
-    jobs: [
-      {
-        id: 1,
-        title: "Desarrollador Frontend",
-        description: "Especialista en React, CSS moderno y consumo de APIs REST",
-        location: "Guadalajara, Jalisco",
-        salary: 55000,
-      },
-      {
-        id: 2,
-        title: "Desarrollador Backend",
-        description: "Experiencia construyendo servicios con Node.js, Express y bases de datos SQL",
-        location: "Monterrey, Nuevo León",
-        salary: 68000,
-      },
-      {
-        id: 3,
-        title: "Desarrollador Fullstack",
-        description: "Perfil con manejo de React, Node.js y despliegues en la nube",
-        location: "Remote",
-        salary: 72000,
-      },
-    ],
-  });
+app.get("/get-jobs", async (req, res) => {
+  const jobs = await import("./jobs.json", { with: { type: "json" } });
+
+  return res.json(jobs);
 });
-
-
 
 // GET con parametros para obtener un solo trabajo por id
 app.get("/get-single-job/:id", (req, res) => {
   const { id } = req.params;
-  const numberId =Number(id);
-
-
+  const numberId = Number(id);
 
   return res.json({
     job: {
-      id : numberId,
+      id: numberId,
       title: "Desarrollador Frontend",
       description: "Desarrollador con experiencia en React y Angular",
       location: "Ciudad de México",
@@ -64,31 +37,14 @@ app.get("/get-single-job/:id", (req, res) => {
   });
 });
 
-
 //Crear ruta opcional
 app.get("/a{b}cd", (req, res) => {
   return res.send("Ruta con parametro opcional");
-})
-
+});
 
 app.get("/ab*cd", (req, res) => {
   return res.send("Ruta con comodin");
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+});
 
 app.listen(PORT, () => {
   console.log(`servidor corriendo en el puerto :${PORT}`);

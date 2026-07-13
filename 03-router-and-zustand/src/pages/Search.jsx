@@ -2,8 +2,6 @@ import { Form } from "../components/formulario";
 
 import { useEffect } from "react";
 
-
-
 import { Navegation } from "../components/navegation/Navegation";
 import { JobListings } from "../components/jobListings/JobListings";
 import { useJobSearch } from "../hooks/useJobSearch";
@@ -16,13 +14,11 @@ const Search = () => {
   const { handlePageChange, handleFilterChange, filters, currentPage } =
     useJobSearch();
 
-
-
   const { jobs, loading, error, totalPages } = useJobsApi(
     filters,
     currentPage,
     RESULTS_PER_PAGE,
-    MIN_LOADING_MS
+    MIN_LOADING_MS,
   );
 
   useEffect(() => {
