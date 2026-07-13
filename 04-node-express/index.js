@@ -1,7 +1,8 @@
 import express from "express";
 import jobs from "./jobs.json" with { type: "json" };
+import DEFAULT_CONFIG from "./config.js";
 
-const PORT = process.env.PORT || 1234;
+const PORT = process.env.PORT || DEFAULT_CONFIG.PORT;
 const app = express();
 
 app.get("/", (req, res) => {
@@ -17,7 +18,14 @@ app.get("/health", (req, res) => {
 
 //GET para obtener todos los trabajos
 app.get("/get-jobs", async (req, res) => {
-  const { limit = 10, technology, text, title, level, offset = 0 } = req.query;
+  const {
+    limit = DEFAULT_CONFIG.LIMIT_PAGINATION,
+    technology,
+    text,
+    title,
+    level,
+    offset = DEFAULT_CONFIG.LIMIT_OFFSET,
+  } = req.query;
 
   console.log(text, technology);
   let filteredJobs = jobs;
@@ -36,7 +44,15 @@ app.get("/get-jobs", async (req, res) => {
     );
   }
 
-  return res.json(filteredJobs);
+  const limitNumer = Number(limit);
+  const offsetNumber = Number(offset);
+
+  const paginatedJobs = filteredJobs.slice(
+    offsetNumber,
+    offsetNumber + limitNumer,
+  );
+
+  return res.json(paginatedJobs);
 });
 
 // GET con parametros para obtener un solo trabajo por id
