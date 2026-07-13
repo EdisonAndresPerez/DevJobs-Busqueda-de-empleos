@@ -1,7 +1,6 @@
 import express from "express";
 import jobs from "./jobs.json" with { type: "json" };
 
-
 const PORT = process.env.PORT || 1234;
 const app = express();
 
@@ -18,9 +17,21 @@ app.get("/health", (req, res) => {
 
 //GET para obtener todos los trabajos
 app.get("/get-jobs", async (req, res) => {
-  const { limit, tecnology } = req.query;
-  console.log({ limit, tecnology });
-  return res.json(jobs);
+  const { limit, tecnology, text, title, level, offset } = req.query;
+  console.log("limit", limit);
+
+  let filteredJobs = jobs;
+
+  if (text) {
+    const searchText = text.toLowerCase();
+    filteredJobs = filteredJobs.filter(
+      (job) =>
+        job.titulo.toLocaleLowerCase().includes(searchText) ||
+        job.descripcion.toLowerCase().includes(searchText),
+    );
+  }
+
+  return res.json(filteredJobs);
 });
 
 // GET con parametros para obtener un solo trabajo por id
