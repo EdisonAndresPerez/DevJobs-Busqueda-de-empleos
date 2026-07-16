@@ -1,6 +1,21 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+
 import { useRouter } from "../hooks/useRouter";
+
 export const Home = () => {
   const { navigate } = useRouter();
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    if (!titleRef.current) return;
+
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
+    );
+  }, []);
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -19,7 +34,7 @@ export const Home = () => {
       <main>
         <section>
           <img width="250px" src="background.webp" alt="Buscar trabajo" />
-          <h1>Encuentra tu próximo empleo</h1>
+          <h1 ref={titleRef}>Encuentra tu próximo empleo</h1>
 
           <p>
             Unete a la comunidad mas grande de desarrolladores y encuentra tu
