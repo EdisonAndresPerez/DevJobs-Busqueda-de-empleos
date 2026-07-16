@@ -1,20 +1,60 @@
-import { useEffect, useRef } from "react";
+import "./style.css";
 import gsap from "gsap";
-
+import { useEffect, useRef } from "react";
 import { useRouter } from "../hooks/useRouter";
 
 export const Home = () => {
   const { navigate } = useRouter();
-  const titleRef = useRef(null);
+  const homeRef = useRef(null);
 
   useEffect(() => {
-    if (!titleRef.current) return;
+    if (!homeRef.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 24 },
-      { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" },
-    );
+    const animationContext = gsap.context(() => {
+      const introTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      introTimeline
+        .fromTo(
+          ".home-hero__image",
+          { opacity: 0.75, scale: 1.05 },
+          { opacity: 1, scale: 1, duration: 1.2 },
+        )
+        .fromTo(
+          ".home-title",
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.8 },
+          "-=0.9",
+        )
+        .fromTo(
+          ".home-hero__description",
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.65 },
+          "-=0.45",
+        )
+        .fromTo(
+          ".home-search",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.75 },
+          "-=0.35",
+        )
+        .fromTo(
+          ".home-why",
+          { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.65 },
+          "-=0.2",
+        )
+        .fromTo(
+          ".home-feature-card",
+          { opacity: 0, y: 26 },
+          { opacity: 1, y: 0, duration: 0.6, stagger: 0.12 },
+          "-=0.2",
+        );
+    }, homeRef);
+
+    return () => {
+      animationContext.revert();
+    };
   }, []);
 
   const handleSearch = (event) => {
@@ -31,17 +71,24 @@ export const Home = () => {
 
   return (
     <>
-      <main>
-        <section>
-          <img width="250px" src="background.webp" alt="Buscar trabajo" />
-          <h1 ref={titleRef}>Encuentra tu próximo empleo</h1>
+      <main ref={homeRef} className="home">
+        <section className="home-hero">
+          <img
+            width="250px"
+            src="background.webp"
+            alt="Buscar trabajo"
+            className="home-hero__image"
+          />
+          <h1 className="title home-title">
+            Encuentra tu próximo empleo
+          </h1>
 
-          <p>
-            Unete a la comunidad mas grande de desarrolladores y encuentra tu
-            proxima oportunidad
+          <p className="home-hero__description">
+            Únete a la comunidad más grande de desarrolladores y encuentra tu
+            próxima oportunidad
           </p>
 
-          <form role="search" onSubmit={handleSearch}>
+          <form role="search" onSubmit={handleSearch} className="home-search">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -72,11 +119,11 @@ export const Home = () => {
           </form>
         </section>
 
-        <section>
-          <h2 style={{ display: "flex", justifyContent: "center" }}>
+        <section className="home-why">
+          <h2>
             ¿Por qué DevJobs?
           </h2>
-          <p style={{ display: " flex" }}>
+          <p>
             DevJobs es la principal bolsa de trabajo para desarrolladores.
             Conectamos a los desarrolladores con las mejores empresas del mundo.
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus
@@ -89,7 +136,7 @@ export const Home = () => {
           </p>
 
           <footer>
-            <article>
+            <article className="home-feature-card">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -110,7 +157,7 @@ export const Home = () => {
               </p>
             </article>
 
-            <article>
+            <article className="home-feature-card">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -142,7 +189,7 @@ export const Home = () => {
               </p>
             </article>
 
-            <article>
+            <article className="home-feature-card">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
