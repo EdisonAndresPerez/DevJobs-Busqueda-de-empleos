@@ -1,5 +1,5 @@
 import express from "express";
-import rawJobs from "./jobs.json";
+import rawJobs from "./jobs.json" with { type: "json" };
 import DEFAULT_CONFIG from "./config.js";
 
 const PORT = process.env.PORT || DEFAULT_CONFIG.PORT;
