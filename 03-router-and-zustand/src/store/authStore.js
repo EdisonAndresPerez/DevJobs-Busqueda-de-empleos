@@ -1,13 +1,13 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import { useFavoriteStore } from './favoriteStore';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import { useFavoriteStore } from "./favoriteStore";
 
 export const useAuthStore = create(
   persist(
     (set) => ({
       //estado
       isLoggedIn: false,
-      
+
       //acciones
       login: () => set({ isLoggedIn: true }),
       logout: () => {
@@ -17,7 +17,7 @@ export const useAuthStore = create(
       },
     }),
     {
-      name: 'auth-storage', // nombre de la clave en localStorage
-    }
-  )
+      name: "auth-storage", // nombre de la clave en localStorage
+    },
+  ),
 );

@@ -734,3 +734,16 @@ article {
   color: var(--primary-light);
   font-size: 0.95rem;
 }
+
+
+.jobs-isuser {
+  text-align: center;
+  margin-bottom: 10px;
+  }
+
+  .job-actions{
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  

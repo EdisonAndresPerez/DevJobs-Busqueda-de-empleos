@@ -3,15 +3,16 @@ import { useState } from "react";
 import Link from "../Link";
 import { useFavoriteStore } from "../../store/favoriteStore";
 import { useAuthStore } from "../../store/authStore";
+import "../../index.css";
 
-export const JobCard = ({ job}) => {
+export const JobCard = ({ job }) => {
   //estado para el boton aplicar
   const [isApplied, setIsApplied] = useState(false);
-  
+
   //zustand store para favoritos
   const { toggleFavorite, isFavorite } = useFavoriteStore();
-  const {isLoggedIn} = useAuthStore()
-  
+  const { isLoggedIn } = useAuthStore();
+
   //verificamos si este job es favorito
   const isFav = isFavorite(job.id);
 
@@ -27,7 +28,7 @@ export const JobCard = ({ job}) => {
     ? "button-apply-job is-applied"
     : "button-apply-job";
   const buttonApplyText = isApplied ? "Aplicado" : "Aplicar";
-  
+
   const buttonFavoriteClasses = isFav
     ? "button-apply-job is-favorite"
     : "button-apply-job";
@@ -53,20 +54,23 @@ export const JobCard = ({ job}) => {
         </small>
         <p>{job.descripcion}</p>
       </div>
-        <button onClick={handleApplyClick}
-         className={buttonApplyClasses}
-         disabled={!isLoggedIn}
+      <div className="job-actions">
+        <button
+          onClick={handleApplyClick}
+          className={buttonApplyClasses}
+          disabled={!isLoggedIn}
         >
           {buttonApplyText}
         </button>
-      
-      <button 
-        onClick={handleFavoriteClick} 
-        disabled={!isLoggedIn}
-        className={buttonFavoriteClasses}
-      >
-        {buttonFavoriteText}
-      </button>
+
+        <button
+          onClick={handleFavoriteClick}
+          disabled={!isLoggedIn}
+          className={buttonFavoriteClasses}
+        >
+          {buttonFavoriteText}
+        </button>
+      </div>
     </article>
   );
 };
