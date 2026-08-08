@@ -106,7 +106,7 @@ export default function JobDetail() {
     setLoading(true);
     setError(null);
 
-    fetch(`https://jscamp-api.vercel.app/api/jobs/${id}`, {
+    fetch(`http://localhost:1234/api/jobs/${id}`, {
       signal: controller.signal,
     })
       .then((response) => {
