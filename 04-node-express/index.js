@@ -1,11 +1,15 @@
 import express from "express";
 import rawJobs from "./jobs.json" with { type: "json" };
 import DEFAULT_CONFIG from "./config.js";
+import cors from "cors";
+
+
 
 const PORT = process.env.PORT || DEFAULT_CONFIG.PORT;
 const MAX_LIMIT = 1000;
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
