@@ -1,6 +1,6 @@
 const DEFAULT_CONFIG = {
     LIMIT_PAGINATION: 10,
-    LIMIT_OFFSET: 0,
+    DEFAULT_OFFSET: 0,
     PORT: 1234,
 };
 

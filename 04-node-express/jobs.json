@@ -6,7 +6,7 @@
     "ubicacion": "Remoto",
     "descripcion": "Buscamos un ingeniero de software con experiencia en desarrollo web y conocimientos en JavaScript, React y Node.js. El candidato ideal debe ser capaz de trabajar en equipo y tener buenas habilidades de comunicación.",
     "data": {
-      "technology": "javascript",
+      "technology": ["javascript", "react", "node"],
       "modalidad": "remoto",
       "nivel": "senior"
     }
@@ -18,7 +18,7 @@
     "ubicacion": "Ciudad de México",
     "descripcion": "Estamos buscando un analista de datos con experiencia en el manejo de grandes conjuntos de datos y herramientas de visualización. Se requiere conocimiento en SQL, Python y R.",
     "data": {
-      "technology": "python",
+      "technology": ["python", "sql"],
       "modalidad": "cdmx",
       "nivel": "junior"
     }
@@ -30,7 +30,7 @@
     "ubicacion": "Guadalajara",
     "descripcion": "Buscamos un desarrollador de aplicaciones móviles con experiencia en iOS y/o Android. El candidato debe tener conocimientos en Swift, Kotlin y el desarrollo de interfaces de usuario.",
     "data": {
-      "technology": "mobile",
+      "technology": ["mobile", "swift", "kotlin"],
       "modalidad": "guadalajara",
       "nivel": "mid-level"
     }
@@ -42,7 +42,7 @@
     "ubicacion": "Remoto",
     "descripcion": "Estamos buscando un ingeniero de DevOps con experiencia en la gestión de infraestructuras en la nube, automatización de procesos y herramientas de integración continua. Se requiere conocimiento en AWS, Azure o GCP.",
     "data": {
-      "technology": "mobile",
+      "technology": ["devops", "aws", "azure", "gcp"],
       "modalidad": "remoto",
       "nivel": "mid-level"
     }
@@ -54,7 +54,7 @@
     "ubicacion": "Barcelona",
     "descripcion": "Estamos buscando un diseñador UX/UI con pasión por crear experiencias digitales excepcionales. Se requiere experiencia en Figma, diseño centrado en el usuario y colaboración con equipos de desarrollo.",
     "data": {
-      "technology": "mobile",
+      "technology": ["design", "figma"],
       "modalidad": "barcelona",
       "nivel": "mid-level"
     }
@@ -66,7 +66,7 @@
     "ubicacion": "Buenos Aires",
     "descripcion": "Se busca un administrador de bases de datos con experiencia en PostgreSQL y MySQL. El candidato deberá asegurar la disponibilidad, seguridad y rendimiento de las bases de datos de producción.",
     "data": {
-      "technology": "mobile",
+      "technology": ["database", "sql"],
       "modalidad": "bsas",
       "nivel": "mid-level"
     }
@@ -78,7 +78,7 @@
     "ubicacion": "Remoto",
     "descripcion": "Buscamos un especialista en ciberseguridad con conocimientos en protección de infraestructuras, análisis de vulnerabilidades y respuesta ante incidentes. Se valorará experiencia con SIEM y certificaciones de seguridad.",
     "data": {
-      "technology": "mobile",
+      "technology": ["security"],
       "modalidad": "remoto",
       "nivel": "mid-level"
     }
@@ -90,7 +90,7 @@
     "ubicacion": "Madrid",
     "descripcion": "Estamos buscando un Product Manager con experiencia en la definición y lanzamiento de productos digitales. Se requiere capacidad analítica, liderazgo y conocimiento en metodologías ágiles.",
     "data": {
-      "technology": "mobile",
+      "technology": ["product"],
       "modalidad": "madrid",
       "nivel": "senior"
     }
@@ -102,7 +102,7 @@
     "ubicacion": "Valencia",
     "descripcion": "Buscamos un desarrollador frontend  junior con experiencia en React, TypeScript y Tailwind CSS. Se valorará conocimiento en optimización de rendimiento y accesibilidad web.",
     "data": {
-      "technology": "react",
+      "technology": ["react", "javascript"],
       "modalidad": "valencia",
       "nivel": "mid-level"
     }
@@ -114,7 +114,7 @@
     "ubicacion": "Bogotá",
     "descripcion": "Estamos buscando un desarrollador backend con experiencia en Node.js, Express y bases de datos NoSQL. Se requiere conocimiento en arquitectura de microservicios.",
     "data": {
-      "technology": "node",
+      "technology": ["node", "express"],
       "modalidad": "bogota",
       "nivel": "mid-level"
     }
@@ -126,7 +126,7 @@
     "ubicacion": "Remoto",
     "descripcion": "Buscamos un ingeniero de machine learning con experiencia en modelos de predicción y procesamiento de datos. Se valorará conocimiento en TensorFlow, PyTorch y MLOps.",
     "data": {
-      "technology": "python",
+      "technology": ["python", "ai"],
       "modalidad": "remoto",
       "nivel": "senior"
     }
@@ -138,7 +138,7 @@
     "ubicacion": "Lima",
     "descripcion": "Se busca ingeniero de QA con experiencia en automatización de pruebas utilizando herramientas como Selenium, Cypress o Playwright. Conocimiento deseado en CI/CD.",
     "data": {
-      "technology": "mobile",
+      "technology": ["qa"],
       "modalidad": "lima",
       "nivel": "mid-level"
     }
@@ -150,7 +150,7 @@
     "ubicacion": "Santiago de Chile",
     "descripcion": "Buscamos un administrador de sistemas con experiencia en Linux, Docker y monitoreo de servidores. Conocimiento en scripting Bash o Python será un plus.",
     "data": {
-      "technology": "mobile",
+      "technology": ["devops", "linux", "docker"],
       "modalidad": "santiago",
       "nivel": "mid-level"
     }
@@ -162,7 +162,7 @@
     "ubicacion": "Madrid",
     "descripcion": "Estamos buscando un Scrum Master con experiencia en metodologías ágiles y gestión de equipos multidisciplinarios. Certificación Scrum Master deseable.",
     "data": {
-      "technology": "mobile",
+      "technology": ["agile"],
       "modalidad": "madrid",
       "nivel": "mid-level"
     }
@@ -174,7 +174,7 @@
     "ubicacion": "Monterrey",
     "descripcion": "Buscamos un técnico de soporte con habilidades en resolución de incidencias, redes y sistemas operativos. Se requiere atención al detalle y excelente trato con el usuario.",
     "data": {
-      "technology": "mobile",
+      "technology": ["support"],
       "modalidad": "monterrey",
       "nivel": "junior"
     }
@@ -186,7 +186,7 @@
     "ubicacion": "Remoto",
     "descripcion": "Prueba para filtrado: javascript, remoto, junior lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem.",
     "data": {
-      "technology": "javascript",
+      "technology": ["javascript"],
       "modalidad": "remoto",
       "nivel": "junior"
     }
@@ -198,7 +198,7 @@
     "ubicacion": "Remoto",
     "descripcion": "Buscamos un Ingeniero de Datos senior para diseñar y mantener pipelines de datos optimizados. Experiencia sólida en Apache Spark, Kafka y arquitecturas en la nube (AWS/GCP).",
     "data": {
-      "technology": "python",
+      "technology": ["python", "sql"],
       "modalidad": "remoto",
       "nivel": "senior"
     }
@@ -210,7 +210,7 @@
     "ubicacion": "Bogotá",
     "descripcion": "Estamos en la búsqueda de un desarrollador fullstack con experiencia en Java (Spring Boot) y Angular para integrarse a nuestro equipo de desarrollo backend y frontend.",
     "data": {
-      "technology": "java",
+      "technology": ["java", "angular"],
       "modalidad": "bogota",
       "nivel": "mid-level"
     }
@@ -222,7 +222,7 @@
     "ubicacion": "Ciudad de México",
     "descripcion": "Buscamos un especialista que lidere la migración de infraestructuras locales hacia entornos híbridos y multi-cloud. Certificaciones en AWS o Azure son altamente valoradas.",
     "data": {
-      "technology": "mobile",
+      "technology": ["cloud", "aws", "azure"],
       "modalidad": "cdmx",
       "nivel": "senior"
     }
@@ -234,7 +234,7 @@
     "ubicacion": "Remoto",
     "descripcion": "Buscamos un programador backend enfocado en la alta disponibilidad y microservicios escalables utilizando Go. Conocimiento de contenedores (Docker/Kubernetes) es indispensable.",
     "data": {
-      "technology": "node",
+      "technology": ["go"],
       "modalidad": "remoto",
       "nivel": "mid-level"
     }
@@ -246,7 +246,7 @@
     "ubicacion": "Barcelona",
     "descripcion": "Buscamos un diseñador que maneje todo el ciclo de vida del diseño, desde la investigación con usuarios hasta prototipos de alta fidelidad. Experiencia con Figma y sistemas de diseño.",
     "data": {
-      "technology": "mobile",
+      "technology": ["design", "figma"],
       "modalidad": "barcelona",
       "nivel": "mid-level"
     }
@@ -258,7 +258,7 @@
     "ubicacion": "Santiago de Chile",
     "descripcion": "Se solicita consultor funcional para implementaciones y soporte de SAP B1. Se requiere experiencia previa interactuando con clientes y levantamiento de requerimientos.",
     "data": {
-      "technology": "mobile",
+      "technology": ["sap"],
       "modalidad": "santiago",
       "nivel": "mid-level"
     }
@@ -270,7 +270,7 @@
     "ubicacion": "Buenos Aires",
     "descripcion": "Buscamos desarrollador junior con muchas ganas de aprender para sumarse al equipo de aplicaciones nativas iOS. Conocimientos básicos de Swift y consumo de APIs REST.",
     "data": {
-      "technology": "mobile",
+      "technology": ["ios", "mobile"],
       "modalidad": "bsas",
       "nivel": "junior"
     }
@@ -282,7 +282,7 @@
     "ubicacion": "Madrid",
     "descripcion": "Buscamos un analista para nuestro centro de operaciones de seguridad (SOC). Monitoreo de alertas, análisis de malware y gestión de incidentes en tiempo real.",
     "data": {
-      "technology": "mobile",
+      "technology": ["security"],
       "modalidad": "madrid",
       "nivel": "mid-level"
     }
@@ -294,7 +294,7 @@
     "ubicacion": "Valencia",
     "descripcion": "Buscamos un desarrollador frontend especializado en Vue.js (Vue 3 / Nuxt) enfocado en crear interfaces limpias, modulares y con excelente performance.",
     "data": {
-      "technology": "react",
+      "technology": ["vue", "javascript"],
       "modalidad": "valencia",
       "nivel": "mid-level"
     }
@@ -306,7 +306,7 @@
     "ubicacion": "Remoto",
     "descripcion": "Prueba de pasantía / junior para filtrado de datos: python, remoto, junior enfocado en scripts automatizados de testing y recolección de información.",
     "data": {
-      "technology": "python",
+      "technology": ["python"],
       "modalidad": "remoto",
       "nivel": "junior"
     }

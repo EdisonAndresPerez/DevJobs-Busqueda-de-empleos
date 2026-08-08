@@ -1,14 +1,57 @@
 import express from "express";
-import jobs from "./jobs.json" with { type: "json" };
+import rawJobs from "./jobs.json";
 import DEFAULT_CONFIG from "./config.js";
 
 const PORT = process.env.PORT || DEFAULT_CONFIG.PORT;
+const MAX_LIMIT = 1000;
+
 const app = express();
 
+app.use(express.json());
+
+// Fuente de verdad en memoria (jobs.json es la persistencia).
+let jobs = rawJobs.map(normalizeJob);
+
+function normalizeTechnology(technology) {
+  if (Array.isArray(technology)) return technology.map((t) => String(t).toLowerCase());
+  if (typeof technology === "string") return [technology.toLowerCase()];
+  return [];
+}
+
+function buildContent(job) {
+  const tech = job.data.technology.join(", ");
+
+  return {
+    description: `${job.descripcion}\n\nÚnete a ${job.empresa} y forma parte de un equipo enfocado en entregar soluciones de calidad. Este puesto ofrece la oportunidad de crecer profesionalmente en un entorno colaborativo.`,
+    responsibilities:
+      "- Desarrollar, mantener y mejorar las soluciones de la empresa.\n- Colaborar con equipos multidisciplinarios para alcanzar los objetivos del proyecto.\n- Escribir código limpio y documentado siguiendo las mejores prácticas.\n- Participar en reuniones de planificación y retrospectivas del equipo.",
+    requirements: `- Experiencia previa en: ${tech || "el área correspondiente"}.\n- Capacidad para trabajar en equipo y buena comunicación.\n- Orientación a resultados y aprendizaje continuo.`,
+    about: `${job.empresa} es una empresa que apuesta por la innovación y el talento. Buscamos personas comprometidas con la calidad y con ganas de aportar valor desde el primer día.`,
+  };
+}
+
+function normalizeJob(job) {
+  const data = {
+    ...job.data,
+    technology: normalizeTechnology(job.data?.technology),
+  };
+
+  return {
+    ...job,
+    data,
+    content: buildContent({ ...job, data }),
+  };
+}
+
+// GET / -> bienvenida
 app.get("/", (req, res) => {
-  return res.send("Hola Mundo, soy edison");
+  return res.json({
+    message: "DevJobs API",
+    endpoints: ["/health", "/api/jobs", "/api/jobs/:id"],
+  });
 });
 
+// GET /health -> estado del servidor
 app.get("/health", (req, res) => {
   return res.json({
     status: "ok",
@@ -16,97 +59,84 @@ app.get("/health", (req, res) => {
   });
 });
 
-//GET para obtener todos los trabajos
-app.get("/get-jobs", async (req, res) => {
+// GET /api/jobs -> lista con filtros y paginación
+// Params opcionales: technology (string o separado por comas), nivel, modalidad, text, limit, offset
+app.get("/api/jobs", (req, res) => {
   const {
-    limit = DEFAULT_CONFIG.LIMIT_PAGINATION,
     technology,
+    nivel,
+    modalidad,
     text,
-    title,
-    level,
-    offset = DEFAULT_CONFIG.LIMIT_OFFSET,
+    limit = DEFAULT_CONFIG.LIMIT_PAGINATION,
+    offset = DEFAULT_CONFIG.DEFAULT_OFFSET,
   } = req.query;
 
-  console.log(text, technology);
-  let filteredJobs = jobs;
+  const limitNumber = Math.min(Math.max(Number(limit) || 1, 1), MAX_LIMIT);
+  const offsetNumber = Math.max(Number(offset) || 0, 0);
+
+  let filtered = jobs;
+
   if (text) {
-    const searchText = text.toLowerCase();
-    filteredJobs = filteredJobs.filter(
-      (job) =>
-        job.titulo.toLocaleLowerCase().includes(searchText) ||
-        job.descripcion.toLowerCase().includes(searchText),
+    const query = String(text).toLowerCase();
+    filtered = filtered.filter((job) =>
+      [job.titulo, job.empresa, job.ubicacion, job.descripcion, job.content.description]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase()
+        .includes(query),
     );
   }
 
   if (technology) {
-    filteredJobs = filteredJobs.filter((job) =>
-      job.data.technology.includes(technology.toLowerCase()),
+    const wanted = String(technology)
+      .toLowerCase()
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean);
+
+    filtered = filtered.filter((job) =>
+      job.data.technology.some((t) => wanted.includes(t)),
     );
   }
 
-  const limitNumer = Number(limit);
-  const offsetNumber = Number(offset);
+  if (modalidad) {
+    const wanted = String(modalidad).toLowerCase();
+    filtered = filtered.filter((job) => job.data.modalidad === wanted);
+  }
 
-  const paginatedJobs = filteredJobs.slice(
-    offsetNumber,
-    offsetNumber + limitNumer,
-  );
+  if (nivel) {
+    const wanted = String(nivel).toLowerCase();
+    filtered = filtered.filter((job) => {
+      const level = job.data.nivel;
+      if (wanted === "mid") return level === "mid" || level === "mid-level";
+      return level === wanted;
+    });
+  }
 
-  return res.json(paginatedJobs);
-});
-
-// GET con parametros para obtener un solo trabajo por id
-app.get("/get-single-job/:id", (req, res) => {
-  const { id } = req.params;
-  const numberId = Number(id);
+  const total = filtered.length;
+  const data = filtered.slice(offsetNumber, offsetNumber + limitNumber);
 
   return res.json({
-    job: {
-      id: numberId,
-      title: "Desarrollador Frontend",
-      description: "Desarrollador con experiencia en React y Angular",
-      location: "Ciudad de México",
-      salary: 60000,
-    },
+    total,
+    limit: limitNumber,
+    offset: offsetNumber,
+    results: data.length,
+    data,
   });
 });
 
-//Crear ruta opcional
-app.get("/a{b}cd", (req, res) => {
-  return res.send("Ruta con parametro opcional");
-});
+// GET /api/jobs/:id -> un solo trabajo
+app.get("/api/jobs/:id", (req, res) => {
+  const { id } = req.params;
+  const job = jobs.find((job) => job.id === id);
 
-app.get("/ab*cd", (req, res) => {
-  return res.send("Ruta con comodin");
+  if (!job) {
+    return res.status(404).json({ error: "Oferta no encontrada" });
+  }
+
+  return res.json(job);
 });
 
 app.listen(PORT, () => {
-  console.log(`servidor corriendo en el puerto :${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
-app.listen(PORT, () => {
-  console.log(`servidor levantado en el puerto http://localhost:${PORT}`);
-});
-
-//metodos HTTP: GET, POST, PUT, DELETE, PATCH
-
-//GET: Obtener datos
-//  app.get('/usuarios', (req, res) => {
-//  res.send('Lista de usuarios');
-//  });
-
-//POST: Crear datos
-// app.post('/usuarios', (req, res) => {
-//   res.send('Usuario creado');
-// });
-
-//PUT: Actualizar datos
-// app.put('/usuarios/:id', (req, res) => {
-//   const { id } = req.params;
-//   res.send(`Usuario con id ${id} actualizado`);
-// });
-
-//DELETE: Eliminar datos
-// app.delete('/usuarios/:id', (req, res) => {
-//   const { id } = req.params;
-//   res.send(`Usuario con id ${id} eliminado`);
-// });
