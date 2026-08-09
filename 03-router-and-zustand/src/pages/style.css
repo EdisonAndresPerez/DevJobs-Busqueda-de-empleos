@@ -224,3 +224,22 @@
   width: 100%;
 }
 
+.login__fields-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.login__form > .login__fields-row {
+  gap: 1rem;
+}
+
+.login__fields-row > .login__field {
+  flex: 1;
+  min-width: 12rem;
+}
+
+.ejemplo{
+  text-align: center;
+  margin-bottom: 5px;
+}

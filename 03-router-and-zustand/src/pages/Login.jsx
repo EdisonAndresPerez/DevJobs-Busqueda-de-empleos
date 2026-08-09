@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from "react-router";
 import { useAuthStore } from "../store/authStore";
+import { AuthField } from "../components/auth/AuthField";
 
 const Login = () => {
   const {  login } = useAuthStore();
@@ -21,29 +22,23 @@ const Login = () => {
         </header>
         <section className="login__container">
           <form onSubmit={handleSubmit}  className="login__form" action="" method="post">
-            <div className="login__field">
-              <input
-                className="login__input"
-                id="login-email"
-                name="email"
-                type="email"
-                placeholder="tu@email.com"
-                autoComplete="email"
-                required
-              />
-            </div>
+            <AuthField
+              id="login-email"
+              name="email"
+              type="email"
+              placeholder="tu@email.com"
+              autoComplete="email"
+              required
+            />
 
-            <div className="login__field">
-              <input
-                className="login__input"
-                id="login-password"
-                name="password"
-                type="password"
-                placeholder="••••••••"
-                autoComplete="current-password"
-                required
-              />
-            </div>
+            <AuthField
+              id="login-password"
+              name="password"
+              type="password"
+              placeholder="••••••••"
+              autoComplete="current-password"
+              required
+            />
 
             <div className="options">
               <label className="remember">

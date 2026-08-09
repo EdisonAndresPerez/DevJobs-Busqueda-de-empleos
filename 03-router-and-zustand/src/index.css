@@ -609,8 +609,13 @@ article {
 }
 
 .login__field {
-  display: grid;
-  gap: 0.5rem;
+  margin: 2px;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 1rem;
+  outline: none;
 }
 
 .login__label {
@@ -622,7 +627,7 @@ article {
   width: 100%;
   padding: 0.75rem 0.75rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--border);
+  border: 1x solid var(--border);
   background: var(--input-bg);
   color: var(--text-primary);
   font-size: 1rem;

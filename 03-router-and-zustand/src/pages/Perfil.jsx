@@ -1,6 +1,6 @@
-
 import { useFavoriteJobs } from "../hooks/useFavoriteJobs";
 import { JobCard } from "../components/jobCard/JobCard";
+import "./style.css";
 
 export const Perfil = () => {
   const { jobs, loading, error } = useFavoriteJobs();
@@ -10,10 +10,14 @@ export const Perfil = () => {
       <section className="jobs-search">
         <h1>Mi Perfil</h1>
         <p>Bienvenido a tu perfil</p>
-        <h3>Empleos guardados en favoritos</h3>
+
+        <main>
+          <h3>{}</h3>
+        </main>
       </section>
 
       <section>
+        <h3 className="ejemplo">Empleos guardados en favoritos</h3>
         {loading && (
           <div className="jobs-loading" role="status" aria-live="polite">
             <span className="jobs-loading__spinner" aria-hidden="true" />
