@@ -3,21 +3,20 @@ import rawJobs from "./jobs.json" with { type: "json" };
 import DEFAULT_CONFIG from "./config.js";
 import cors from "cors";
 
-
-
 const PORT = process.env.PORT || DEFAULT_CONFIG.PORT;
 const MAX_LIMIT = 1000;
 
 const app = express();
+app.use(express.json());
 app.use(cors());
 
-app.use(express.json());
 
 // Fuente de verdad en memoria (jobs.json es la persistencia).
 let jobs = rawJobs.map(normalizeJob);
 
 function normalizeTechnology(technology) {
-  if (Array.isArray(technology)) return technology.map((t) => String(t).toLowerCase());
+  if (Array.isArray(technology))
+    return technology.map((t) => String(t).toLowerCase());
   if (typeof technology === "string") return [technology.toLowerCase()];
   return [];
 }
@@ -83,7 +82,13 @@ app.get("/api/jobs", (req, res) => {
   if (text) {
     const query = String(text).toLowerCase();
     filtered = filtered.filter((job) =>
-      [job.titulo, job.empresa, job.ubicacion, job.descripcion, job.content.description]
+      [
+        job.titulo,
+        job.empresa,
+        job.ubicacion,
+        job.descripcion,
+        job.content.description,
+      ]
         .filter(Boolean)
         .join(" ")
         .toLowerCase()
@@ -146,6 +151,24 @@ app.listen(PORT, () => {
 });
 
 
-app.post('/jobs', (req, res) => {
-  const {titulo, empresa, ubicacion, descripcion, data} = req.body
-})
+
+// POST crear trabajo
+app.post("/api/jobs", (req, res) => {
+  const { titulo, empresa, ubicacion, descripcion, data } = req.body;
+
+  const newJobs = {
+    id: crypto.randomUUID(),
+    titulo,
+    empresa,
+    ubicacion,
+    descripcion,
+    data,
+  };
+
+  jobs.push(newJobs); // => lo haremos desde la base de datos
+
+  return res.status(201).json(newJobs)
+});
+
+
+
