@@ -77,7 +77,7 @@ const Register = () => {
               </a>
             </div>
 
-            <button>Iniciar sesión</button>
+            <button>Crear cuenta</button>
 
             <p className="login__no-account">¿Ya tienes cuenta?</p>
             <Link href="/login" className="login__secondary" type="button">

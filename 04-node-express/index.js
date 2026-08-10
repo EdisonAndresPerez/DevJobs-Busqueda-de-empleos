@@ -144,3 +144,8 @@ app.get("/api/jobs/:id", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
+
+app.post('/jobs', (req, res) => {
+  const {titulo, empresa, ubicacion, descripcion, data} = req.body
+})
