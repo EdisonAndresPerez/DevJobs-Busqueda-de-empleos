@@ -4,9 +4,8 @@ import DEFAULT_CONFIG from "./config.js";
 import cors from "cors";
 
 const PORT = process.env.PORT || DEFAULT_CONFIG.PORT;
-const MAX_LIMIT = 1000;
-
 const app = express();
+const MAX_LIMIT = 1000;
 app.use(express.json());
 app.use(cors());
 

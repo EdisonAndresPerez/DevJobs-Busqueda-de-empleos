@@ -28,8 +28,7 @@ export function useFavoriteJobs() {
         setError(null);
 
         // Hacemos fetch de todos los jobs y filtramos por IDs favoritos
-        // const url = "https://jscamp-api.vercel.app/api/jobs?limit=1000";
-        const url = "http://localhost:1234/api/jobs";
+        const url = "http://localhost:1234/api/jobs?limit=1000";
         const response = await fetch(url, { signal: controller.signal });
 
         if (!response.ok) {
