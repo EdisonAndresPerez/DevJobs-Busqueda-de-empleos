@@ -1,16 +1,28 @@
 import express from "express";
-import cors from "cors";
-import DEFAULT_CONFIG from "./config.js";
+import { corsMiddleware } from "./middlewares/cors.js";
+import jobsRouter from "./routes/jobs.routes.js";
 
-
-//Iniciar nuestra app
-const PORT = process.env.PORT || DEFAULT_CONFIG.PORT;
 const app = express();
 
+app.use(express.json());
+app.use(corsMiddleware);
 
-
-//Iniciar nuestro servidor
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+// GET / -> bienvenida
+app.get("/", (req, res) => {
+  return res.json({
+    message: "DevJobs API",
+    endpoints: ["/health", "/api/jobs", "/api/jobs/:id"],
   });
-  
+});
+
+// GET /health -> estado del servidor
+app.get("/health", (req, res) => {
+  return res.json({
+    status: "ok",
+    uptime: process.uptime(),
+  });
+});
+
+app.use("/api/jobs", jobsRouter);
+
+export default app;
