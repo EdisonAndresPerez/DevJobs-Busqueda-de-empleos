@@ -14,9 +14,10 @@ const sleep = (ms, signal) =>
     signal?.addEventListener("abort", onAbort, { once: true });
   });
 
+import { API_JOBS_URL } from "../config";
+
 const buildJobsUrl = (filters, { limit, offset } = {}) => {
-  // const baseUrl = "https://jscamp-api.vercel.app/api/jobs";
-  const baseUrl = "http://localhost:1234/api/jobs";
+  const baseUrl = API_JOBS_URL;
   const params = new URLSearchParams();
 
   const technology = (filters?.technology ?? "").toString().trim();

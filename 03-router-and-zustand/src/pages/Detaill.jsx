@@ -9,6 +9,7 @@ import Link from "../components/Link";
 import "./style.css";
 import { useAuthStore } from "../store/authStore.js";
 import { useFavoriteStore } from "../store/favoriteStore.js";
+import { API_JOBS_URL } from "../config";
 
 function JobSection({ title, content }) {
   const html = snarkdown(content);
@@ -106,7 +107,7 @@ export default function JobDetail() {
     setLoading(true);
     setError(null);
 
-    fetch(`http://localhost:1234/api/jobs/${id}`, {
+    fetch(`${API_JOBS_URL}/${id}`, {
       signal: controller.signal,
     })
       .then((response) => {

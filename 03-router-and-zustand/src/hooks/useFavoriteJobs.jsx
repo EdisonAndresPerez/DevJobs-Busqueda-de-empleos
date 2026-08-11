@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useFavoriteStore } from "../store/favoriteStore";
+import { API_JOBS_URL } from "../config";
 
 /**
  * Hook personalizado para obtener los datos completos de los jobs favoritos
@@ -28,7 +29,7 @@ export function useFavoriteJobs() {
         setError(null);
 
         // Hacemos fetch de todos los jobs y filtramos por IDs favoritos
-        const url = "http://localhost:1234/api/jobs?limit=1000";
+        const url = `${API_JOBS_URL}?limit=1000`;
         const response = await fetch(url, { signal: controller.signal });
 
         if (!response.ok) {

@@ -3,7 +3,11 @@ const DEFAULT_CONFIG = {
     LIMIT_PAGINATION: 10,
     DEFAULT_OFFSET: 0,
     MAX_LIMIT: 1000,
-    CORS_ORIGINS: ["http://localhost:5173", "http://127.0.0.1:5173"],
+    CORS_ORIGINS: [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://dev-jobs-busqueda-de-empleos-bootca.vercel.app",
+    ],
 };
 
 export default DEFAULT_CONFIG;
